@@ -12,129 +12,75 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AccessoryList extends HttpServlet {
 
-	/* Accessory Page Displays all the Accessories and their Information in Game Speed */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		PrintWriter pw = response.getWriter();
+        response.setContentType("text/html");
+        PrintWriter pw = response.getWriter();
+        String manufacturer = request.getParameter("maker");
+        Map<Long, Product> allAccessoriesHashMap = new HashMap<>();
+        Map<Long, Product> productHashMap = new HashMap<>();
+        try {
+            productHashMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.WearableTechnology);
+			allAccessoriesHashMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-		/* Checks the Console maker whether it is microsft or sony or nintendo 
-		   Add the respective product value to hashmap  */
-
-		String CategoryName = request.getParameter("maker");
-//		String ConsoleName = request.getParameter("console");
-
-		Map<Long,Product> allaccessories = new HashMap<> ();
-        Map<Long,Product> allconsoles = new HashMap<> ();
-
-
-		/* Checks the Tablets type whether it is microsft or sony or nintendo */
-		try{
-		     allconsoles = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.WearableTechnology);
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		} 
-
-		/* Checks the Tablets type whether it is microsft or sony or nintendo */
-		try{
-		     allaccessories = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
-		}
-		catch(Exception e)
-		{
-			
-		}
-		Map<Long, Product> hm = new HashMap<>();
-			if(CategoryName.equals("microsoft"))
-			{
-				for(Map.Entry<Long, Product> entry : allconsoles.entrySet())
-				{	
-					if(entry.getValue().getManufacturer().equals(ProductManufacturers.MicroSoft))
-					{
-					 	hm.put(entry.getValue().getProductId(), entry.getValue());
-					}
-				}
-				
-			}
-			else if(CategoryName.equals("sony"))
-			{	
-				for(Map.Entry<Long, Product> entry : allconsoles.entrySet())
-				{	
-				  if(entry.getValue().getManufacturer().equals(ProductManufacturers.Sony))
-				 { 
-					hm.put(entry.getValue().getProductId(),entry.getValue());
-				 }
+		if (manufacturer != null && !manufacturer.isEmpty()) {
+			HashMap<Long, Product> temp = new HashMap<>();
+			ProductManufacturers productManufacturers = ProductManufacturers.getEnum(manufacturer);
+			for (Map.Entry<Long, Product> entry : productHashMap.entrySet()) {
+				if (entry.getValue().getManufacturer().equals(productManufacturers)) {
+					temp.put(entry.getValue().getProductId(), entry.getValue());
 				}
 			}
-			else if(CategoryName.equals("nintendo"))
-			{
-				for(Map.Entry<Long, Product> entry : allconsoles.entrySet())
-				{
-				  if(entry.getValue().getManufacturer().equals(ProductManufacturers.Nintendo))
-				 {
-					 hm.put(entry.getValue().getProductId(),entry.getValue());
-				 }
-				}	
-			}
-			
-//		Console console = hm.get(ConsoleName);
-				
-		/* Header, Left Navigation Bar are Printed.
+			productHashMap = temp;
+		}
 
-		All the Accessories and Accessories information are dispalyed in the Content Section
+        Utilities utility = new Utilities(request, pw);
+        utility.printHtml("Header.html");
+        utility.printHtml("LeftNavigationBar.html");
+        pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
+        pw.print("<a style='font-size: 24px;'>" + manufacturer + ": Accessories</a>");
+        pw.print("</h2><div class='entry'><table id='bestseller'>");
+        int i = 1;
+        int size = 2;
+        for (Product product: productHashMap.values()) {
 
-		and then Footer is Printed*/
+            for (Map.Entry<Integer, Integer> acc : product.getAccessories().entrySet()) {
 
-		
-		Utilities utility = new Utilities(request,pw);
-		utility.printHtml("Header.html");
-		utility.printHtml("LeftNavigationBar.html");
-		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>"+ CategoryName +": Accessories</a>");
-		pw.print("</h2><div class='entry'><table id='bestseller'>");
-		int i = 1; int size= 2;
-		for(Map.Entry<Long, Product> entry : hm.entrySet())
-		{
-			Product product = entry.getValue();
-			
-			
-			for(Map.Entry<Integer, Integer> acc: product.getAccessories().entrySet())
-			{
+                Product accessory = allAccessoriesHashMap.get(acc.getValue());
+                if (i % 2 == 1) pw.print("<tr>");
 
-				Product accessory= allaccessories.get(acc.getValue());
-				if(i%2==1) pw.print("<tr>");
-				
-				pw.print("<td><div id='shop_item'>");
-				pw.print("<h3>"+accessory.getName()+"</h3>");
-				pw.print("<strong>"+accessory.getPrice()+"$</strong><ul>");
-				pw.print("<li id='item'><img src='images/accessories/"+accessory.getImage()+"' alt='' /></li>");
-				pw.print("<li><form method='post' action='Cart'>" +
-						"<input type='hidden' name='name' value='"+acc.getValue()+"'>"+
-						"<input type='hidden' name='type' value='accessories'>"+
-						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+product.getName()+"'>"+
-						"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
-				pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+accessory.getName()+"'>"+
-						"<input type='hidden' name='type' value='accessories'>"+
-						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+product.getName()+"'>"+
-						"<input type='hidden' name='price' value='"+accessory.getPrice()+"'>"+
-						"<input type='submit' value='WriteReview' class='btnreview'></form></li>");
-				pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+accessory.getName()+"'>"+
-						"<input type='hidden' name='type' value='accessories'>"+
-						"<input type='hidden' name='maker' value='"+CategoryName+"'>"+
-						"<input type='hidden' name='access' value='"+product.getName()+"'>"+
-						"<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-		
-				pw.print("</ul></div></td>");
-				if(i%2==0 || i == size) pw.print("</tr>");
-				i++;
-			
-			}	
-		}	
-		pw.print("</table></div></div></div>");		
-		utility.printHtml("Footer.html");
-	}
+                pw.print("<td><div id='shop_item'>");
+                pw.print("<h3>" + accessory.getName() + "</h3>");
+                pw.print("<strong>" + accessory.getPrice() + "$</strong><ul>");
+                pw.print("<li id='item'><img src='images/accessories/" + accessory.getImage() + "' alt='' /></li>");
+                pw.print("<li><form method='post' action='Cart'>" +
+                        "<input type='hidden' name='name' value='" + acc.getValue() + "'>" +
+                        "<input type='hidden' name='type' value='accessories'>" +
+                        "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+                pw.print("<li><form method='post' action='WriteReview'>" + "<input type='hidden' name='name' value='" + accessory.getName() + "'>" +
+                        "<input type='hidden' name='type' value='accessories'>" +
+                        "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='hidden' name='price' value='" + accessory.getPrice() + "'>" +
+                        "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+                pw.print("<li><form method='post' action='ViewReview'>" + "<input type='hidden' name='name' value='" + accessory.getName() + "'>" +
+                        "<input type='hidden' name='type' value='accessories'>" +
+                        "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
+
+                pw.print("</ul></div></td>");
+                if (i % 2 == 0 || i == size) pw.print("</tr>");
+                i++;
+
+            }
+        }
+        pw.print("</table></div></div></div>");
+        utility.printHtml("Footer.html");
+    }
 }

@@ -64,7 +64,7 @@ public class TransactionSQL extends HttpServlet {
             PreparedStatement pst = conn.prepareStatement(selectOrderQuery, PreparedStatement.RETURN_GENERATED_KEYS);
 
             pst.setLong(1, transaction.getUserId());
-            pst.setLong(2, transaction.getTransactionId());
+            pst.setLong(2, transaction.getStoreLocationId());
             pst.setString(3, transaction.getFirstName());
             pst.setString(4, transaction.getLastName());
             pst.setString(5, transaction.getAddress1());
@@ -74,8 +74,8 @@ public class TransactionSQL extends HttpServlet {
             pst.setString(9,transaction.getZipcode());
             pst.setString(10, transaction.getPhone());
             pst.setString(11,transaction.getDeliveryOption());
-            pst.setDate(12, (Date) transaction.getPurchaseDate());
-            pst.setDate(13, (Date) transaction.getShipDate());
+            pst.setDate(12, new Date(transaction.getPurchaseDate().getTime()));
+            pst.setDate(13, new Date(transaction.getShipDate().getTime()));
             pst.setDouble(14,transaction.getShippingCost());
             pst.setDouble(15,transaction.getTotalSales());
             pst.setString(16,transaction.getCreditCardNo());
@@ -93,6 +93,38 @@ public class TransactionSQL extends HttpServlet {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    public static void updateTransaction(Connection conn, Transaction transaction) {
+
+
+        try {
+            //select the table
+            String selectOrderQuery = "update Transactions set storeLocationId=?, firstName=?, lastName=?, " +
+                    "address1=?, address2=?, city=?, state=?, zipcode=?, phone=?," +
+                    "deliveryOption=?, purchaseDate=?, shipDate=?, creditCardNo=?;";
+
+            PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
+
+            pst.setLong(1, transaction.getStoreLocationId());
+            pst.setString(2, transaction.getFirstName());
+            pst.setString(3, transaction.getLastName());
+            pst.setString(4, transaction.getAddress1());
+            pst.setString(5, transaction.getAddress2());
+            pst.setString(6, transaction.getCity());
+            pst.setString(7, transaction.getState());
+            pst.setString(8,transaction.getZipcode());
+            pst.setString(9, transaction.getPhone());
+            pst.setString(10,transaction.getDeliveryOption());
+            pst.setDate(11, new Date(transaction.getPurchaseDate().getTime()));
+            pst.setDate(12, new Date(transaction.getShipDate().getTime()));
+            pst.setString(13,transaction.getCreditCardNo());
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

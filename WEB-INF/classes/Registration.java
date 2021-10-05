@@ -61,7 +61,7 @@ public class Registration extends HttpServlet {
 				/*create a user object and store details into hashmap
 				store the user hashmap into file  */
 
-                    User user = new User(username, password, userType.toString());
+                    User user = new User(null, username, password, password,  userType.toString());
                     hm.put(username, user);
                     MySqlDataStoreUtilities.insertUser(username, password, repassword, userType.toString());
                     HttpSession session = request.getSession(true);

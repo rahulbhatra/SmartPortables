@@ -76,8 +76,8 @@ public class MySqlDataStoreUtilities {
             getConnection();
 
             String insertIntoCustomerOrderQuery = "INSERT INTO customerOrders(" +
-                    "transactionId, userId, orderName, orderPrice, creditCardNo, warrantyPrice) "
-                    + "VALUES (?,?,?,?,?,?);";
+                    "transactionId, userId, orderName, orderPrice, warrantyPrice) "
+                    + "VALUES (?,?,?,?,?);";
 
             System.out.println(insertIntoCustomerOrderQuery);
 
@@ -118,6 +118,11 @@ public class MySqlDataStoreUtilities {
     public static Map<String, User> selectUser() {
         getConnection();
         return RegistrationSQL.selectUser(conn);
+    }
+
+    public static User getUser(Long userId) {
+        getConnection();
+        return RegistrationSQL.getUser(conn, userId);
     }
 
     public static List<StoreLocation> getStoreLocations() {
@@ -181,6 +186,11 @@ public class MySqlDataStoreUtilities {
     public static Transaction addTransaction(Transaction transaction) {
         getConnection();
         return TransactionSQL.addTransaction(conn, transaction);
+    }
+
+    public static void updateTransaction(Transaction transaction) {
+        getConnection();
+        TransactionSQL.updateTransaction(conn, transaction);
     }
 
 

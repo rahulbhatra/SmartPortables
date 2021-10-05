@@ -242,15 +242,6 @@ public class Utilities extends HttpServlet {
         }
     }
 
-
-    public void updatePayment(CustomerOrder customerOrder) {
-        try {
-            System.out.println("do nothing");
-        } catch (Exception e) {
-            System.out.println("inside exception file not written properly");
-        }
-    }
-
     public void deletePayment(Long customerOrderId) {
         try {
             MySqlDataStoreUtilities.deleteCustomerOrder(customerOrderId);

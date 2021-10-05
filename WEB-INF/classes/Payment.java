@@ -79,11 +79,11 @@ public class Payment extends HttpServlet {
                     Double.parseDouble(orderTotal),
                     creditCardNo
             );
-            MySqlDataStoreUtilities.addTransaction(transaction);
+            transaction = MySqlDataStoreUtilities.addTransaction(transaction);
 
             System.out.println("------------ Transaction Id ---------" + transaction.toString());
             CustomerOrder customerOrder = new CustomerOrder(null,
-                    null,
+                    transaction.getTransactionId(),
                     utilities.getUserId(),
                     orderItem.getName(),
                     orderItem.getPrice(),

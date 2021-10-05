@@ -40,4 +40,23 @@ public class RegistrationSQL extends HttpServlet {
         }
         return userHashMap;
     }
+
+
+    public static User getUser(Connection conn, Long userId) {
+        try {
+            Statement stmt = conn.createStatement();
+            String query = "select * from  Registration where userId=?";
+            PreparedStatement pst = conn.prepareStatement(query);
+            pst.setLong(1, userId);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+                User user = new User(rs.getLong("userId"), rs.getString("username"), rs.getString("password"), rs.getString("repassword"), rs.getString("usertype"));
+                return user;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

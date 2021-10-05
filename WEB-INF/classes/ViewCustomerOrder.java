@@ -5,8 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +21,7 @@ public class ViewCustomerOrder extends HttpServlet {
         Utilities utility = new Utilities(request, pw);
         HttpSession session = request.getSession(true);
         Object userType = session.getAttribute("usertype");
-        Object customerName = request.getParameter("customerName");
+        Long userId = request.getParameter("userId") != null ? Long.parseLong(request.getParameter("userId")) : null;
 
         if (!utility.isLoggedin() && userType != null && userType.toString().equalsIgnoreCase("manager")) {
             session.setAttribute("login_msg", "Please Login as Salesman to View Order of Customers");
@@ -51,12 +49,12 @@ public class ViewCustomerOrder extends HttpServlet {
 
         pw.print("<td class='createContentInput'>");
 
-        pw.print("<select style='radius: 20px; width: 100%;' name='customerName' id='customerName'>");
+        pw.print("<select style='radius: 20px; width: 100%;' name='userId' id='userId'>");
         for (User user : userHashMap.values()) {
-            if (customerName != null && user.getUserName() != null && user.getUserName().equalsIgnoreCase(customerName.toString())) {
-                pw.print("<option value='" + user.getUserName() + "' selected>" + user.getUserName() + "</option>");
+            if (userId != null && user.getUserId() == userId) {
+                pw.print("<option value='" + user.getUserId() + "' selected>" + user.getUserName() + "</option>");
             } else {
-                pw.print("<option value='" + user.getUserName() + "'>" + user.getUserName() + "</option>");
+                pw.print("<option value='" + user.getUserId() + "'>" + user.getUserName() + "</option>");
             }
         }
         pw.print("</td>");
@@ -66,9 +64,8 @@ public class ViewCustomerOrder extends HttpServlet {
         pw.print("<div class='buttonContainer'><button class='loginAsCustomerButton' type='submit' value='Submit'>Search Orders</button></div>");
         pw.print("</form>");
 
-        int size = utility.getOrderPaymentSize();
-
-        if (size > 0) {
+        List<CustomerOrder> customerOrders = MySqlDataStoreUtilities.getCustomerOrdersByUserId(userId);
+        if (customerOrders.size() > 0) {
             pw.print("<table style='width:100%'");
             pw.print("<tr>" +
                     "<th> Order Id </th>" +
@@ -80,13 +77,10 @@ public class ViewCustomerOrder extends HttpServlet {
                     "</tr>"
             );
 
-            List<CustomerOrder> orderPayments = new ArrayList<>();
-            if (customerName != null) {
-                orderPayments = MySqlDataStoreUtilities.getCustomerOrdersByUserId(utility.getUserId());
-            }
 
-            for (CustomerOrder customerOrder : orderPayments) {
-                System.out.println("Order username:" + utility.username() + " customer name" + customerName);
+            for (CustomerOrder customerOrder : customerOrders) {
+
+//                System.out.println("Order username:" + customerOrder + " customer name" + customerName);
 
                 pw.print("<tr>");
                 pw.print("<td>" + customerOrder.getCustomerOrderId() + "</td>" +
@@ -98,16 +92,12 @@ public class ViewCustomerOrder extends HttpServlet {
 
 
                 pw.print("<td style='display:inline-flex;'><form style='margin:auto' action='EditCustomerOrder' method='get'>" +
-                        "<input type='hidden' name='orderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
-                        "<input type='hidden' name='customerName' value='" + customerName.toString() + "'>" +
-                        "<input type='hidden' name='orderName' value='" + customerOrder.getOrderName() + "'>" +
+                        "<input type='hidden' name='customerOrderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
                         "<button class='mainButton' type='submit' value='submit'>Edit</button>" +
                         "</form>");
 
                 pw.print("<form style='margin:auto' action='RemoveCustomerOrder' method='post'>" +
-                        "<input type='hidden' name='orderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
-                        "<input type='hidden' name='customerName' value='" + customerName.toString() + "'>" +
-                        "<input type='hidden' name='orderName' value='" + customerOrder.getOrderName() + "'>" +
+                        "<input type='hidden' name='customerOrderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
                         "<button class='mainButton' type='submit' value='submit'>Remove</button>" +
                         "</form>" +
                         "</td>");
@@ -115,8 +105,6 @@ public class ViewCustomerOrder extends HttpServlet {
                 pw.print("</tr>");
 
             }
-
-
             pw.print("</table>");
         }
     }

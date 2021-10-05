@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 
 @WebServlet("/EditCustomerOrder")
 public class EditCustomerOrder extends HttpServlet {
@@ -35,13 +36,14 @@ public class EditCustomerOrder extends HttpServlet {
             //get the order product details	on clicking submit the form will be passed to submitorder page
 
             Long customerOrderId = Long.parseLong(request.getParameter("customerOrderId"));
-            int orderPaymentIndex = Integer.parseInt(request.getParameter("orderPaymentIndex"));
-            String userName = request.getParameter("customerName");
-            String orderName = request.getParameter("orderName");
+
 
             System.out.println( "---- Inside Edit Customer ------------");
-            CustomerOrder customerOrder = utility.getCustomerOrder(customerOrderId);
+            CustomerOrder customerOrder = MySqlDataStoreUtilities.getCustomerOrder(customerOrderId);
             Transaction transaction = MySqlDataStoreUtilities.getTransaction(customerOrder.getTransactionId());
+            User user = MySqlDataStoreUtilities.getUser(customerOrder.getUserId());
+
+
             System.out.println( "---- See Order Payment ------------" + customerOrder.toString());
 
             utility.printHtml("Header.html");
@@ -51,7 +53,7 @@ public class EditCustomerOrder extends HttpServlet {
             pw.print("<a style='font-size: 24px;'>EditCustomerOrder</a>");
             pw.print("</h2><div class='entry'>");
             pw.print("<table  class='gridtable'>" + "<tr><td>Customer Name:</td><td>");
-            pw.print(userName);
+            pw.print(user.getUserName());
             pw.print("</td></tr>");
 
             pw.print("<tr><td>");
@@ -59,10 +61,7 @@ public class EditCustomerOrder extends HttpServlet {
             pw.print("</td>");
             pw.print("<td>");
             pw.print("<input type='text' name='firstName' value='" + transaction.getFirstName() + "' />");
-            pw.print("<input type='hidden' name='customerOrderId' value='" + customerOrderId + "'>" +
-                    "<input type='hidden' name='orderPaymentIndex' value='" + orderPaymentIndex + "'>" +
-                    "<input type='hidden' name='orderName' value='" + orderName + "'>" +
-                    "<input type='hidden' name='customerName' value='" + userName + "'>");
+            pw.print("<input type='hidden' name='customerOrderId' value='" + customerOrderId + "'>");
             pw.print("</td></tr>");
 
             pw.print("<tr><td>");
@@ -173,12 +172,7 @@ public class EditCustomerOrder extends HttpServlet {
             response.sendRedirect("Login");
             return;
         }
-        // get the payment details like credit card no address processed from cart servlet
         Long customerOrderId = Long.parseLong(request.getParameter("customerOrderId"));
-        int orderPaymentIndex = Integer.parseInt(request.getParameter("orderPaymentIndex"));
-
-        String userName = request.getParameter("customerName");
-        String orderName = request.getParameter("orderName");
 
         String customerName = request.getParameter("customerName");
         String firstName = request.getParameter("firstName");
@@ -189,8 +183,8 @@ public class EditCustomerOrder extends HttpServlet {
         String state = request.getParameter("state");
         String zipCode = request.getParameter("zipCode");
         String phone = request.getParameter("phone");
-        String order = request.getParameter("order");
-        String storePickupLocation = request.getParameter("storePickupLocation");
+        String deliveryOption = request.getParameter("order");
+        String storeLocationId = request.getParameter("storePickupLocation");
 
 
         String creditCardNo=request.getParameter("creditCardNo");
@@ -199,13 +193,23 @@ public class EditCustomerOrder extends HttpServlet {
         System.out.print(creditCardNo);
 
         validation(firstName, lastName, address1, city, state, zipCode,
-                phone, storePickupLocation, order, creditCardNo, utilities, pw);
+                phone, storeLocationId, deliveryOption, creditCardNo, utilities, pw);
 
         CustomerOrder customerOrder = utilities.getCustomerOrder(customerOrderId);
         Transaction transaction = MySqlDataStoreUtilities.getTransaction(customerOrder.getTransactionId());
-        utilities.updatePayment(customerOrder);
+        transaction.setFirstName(firstName);
+        transaction.setLastName(lastName);
+        transaction.setAddress1(address1);
+        transaction.setAddress2(address2);
+        transaction.setCity(city);
+        transaction.setState(state);
+        transaction.setZipcode(zipCode);
+        transaction.setPhone(phone);
+        transaction.setDeliveryOption(deliveryOption);
+        transaction.setCreditCardNo(creditCardNo);
+        MySqlDataStoreUtilities.updateTransaction(transaction);
 
-        response.sendRedirect("ViewCustomerOrder?customerName=" +  customerName);
+        response.sendRedirect("ViewCustomerOrder?userId=" +  customerOrder.getUserId());
 
     }
 

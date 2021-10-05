@@ -103,15 +103,11 @@ public class ProductList extends HttpServlet {
                 System.out.println(entry.getKey() + " " + manufacturer);
 
                 pw.print("<li><form method='post' action='Cart'>" +
-//                        "<input type='hidden' name='name' value='" + entry.getKey() + "'>" +
-//                        "<input type='hidden' name='type' value='" + product.getCategory() + "'>" +
-//                        "<input type='hidden' name='maker' value='" + manufacturer + "'>" +
-//                        "<input type='hidden' name='access' value=''>" +
                         "<input type='hidden' name='productId' value='" + product.getProductId() + "'>" +
                         "<input type='checkbox' id='warranty' name='warranty' value='warranty'>" +
                         "<label for='vehicle1'>1 Year Warranty 25$</label>" +
-
                         "<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+
                 pw.print("<li><form method='post' action='ViewProduct'>" +
                         "<input type='hidden' name='name' value='" + entry.getKey() + "'>" +
                         "<input type='hidden' name='type' value='" + product.getCategory() + "'>" +

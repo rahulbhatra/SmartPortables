@@ -133,104 +133,104 @@ public class ProductDetailsSQL extends HttpServlet {
 //
 //            }
 
-            for (Map.Entry<Long, Product> entry : SaxParserDataStore.wearableTechnologyHashMap.entrySet()) {
-
-                Product product = entry.getValue();
-                System.out.println("-------- Inside Product Map Wearable -- " + product.toString());
-                String name = ProductCategory.WearableTechnology.toString();
-
-
-                PreparedStatement pst = conn.prepareStatement(insertProductQurey, PreparedStatement.RETURN_GENERATED_KEYS);
-                pst.setString(1, product.getName());
-                pst.setDouble(2, product.getPrice());
-                pst.setString(3, product.getImage());
-                pst.setString(4, product.getManufacturer().toString());
-                pst.setString(5, product.getCondition());
-                pst.setDouble(6, product.getDiscount());
-                pst.setString(7, product.getDescription());
-                pst.setString(8, product.getCategory().toString());
-                pst.setDouble(9, product.getRebate());
-
-                pst.executeUpdate();
-
-                ResultSet rs = pst.getGeneratedKeys();
-                if(rs.next()) {
-                    product.setProductId(rs.getLong(1));
-                }
-
-                try {
-                    Map<Integer, Integer> acc = product.getAccessories();
-//                    productId int not null,
-//                            accessoryId int not null,
-                    String insertAccessoryQurey = "INSERT INTO  ProductAccessories(productId,accessoryId)" +
-                            "VALUES (?,?);";
-                    for (Map.Entry<Integer, Integer> accentry : acc.entrySet()) {
-                        PreparedStatement pstacc = conn.prepareStatement(insertAccessoryQurey);
-                        pstacc.setLong(1, product.getProductId());
-                        pstacc.setLong(2, accentry.getValue());
-                        pstacc.executeUpdate();
-                    }
-                } catch (Exception et) {
-                    et.printStackTrace();
-                }
-            }
-
-            for (Map.Entry<Long, Product> entry : SaxParserDataStore.phoneHashMap.entrySet()) {
-                String name = ProductCategory.Phone.toString();
-
-                Product product = entry.getValue();
-
-                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
-                pst.setString(1, product.getName());
-                pst.setDouble(2, product.getPrice());
-                pst.setString(3, product.getImage());
-                pst.setString(4, product.getManufacturer().toString());
-                pst.setString(5, product.getCondition());
-                pst.setDouble(6, product.getDiscount());
-                pst.setString(7, product.getDescription());
-                pst.setString(8, product.getCategory().toString());
-                pst.setDouble(9, product.getRebate());
-
-                pst.executeUpdate();
-
-
-            }
-
-            for (Map.Entry<Long, Product> entry : SaxParserDataStore.laptopHashMap.entrySet()) {
-                String name = ProductCategory.Laptop.toString();
-                Product product = entry.getValue();
-
-                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
-                pst.setString(1, product.getName());
-                pst.setDouble(2, product.getPrice());
-                pst.setString(3, product.getImage());
-                pst.setString(4, product.getManufacturer().toString());
-                pst.setString(5, product.getCondition());
-                pst.setDouble(6, product.getDiscount());
-                pst.setString(7, product.getDescription());
-                pst.setString(8, product.getCategory().toString());
-                pst.setDouble(9, product.getRebate());
-
-                pst.executeUpdate();
-            }
-
-            for (Map.Entry<Long, Product> entry : SaxParserDataStore.voiceAssistantHashMap.entrySet()) {
-                String name = ProductCategory.Laptop.toString();
-                Product product = entry.getValue();
-
-                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
-                pst.setString(1, product.getName());
-                pst.setDouble(2, product.getPrice());
-                pst.setString(3, product.getImage());
-                pst.setString(4, product.getManufacturer().toString());
-                pst.setString(5, product.getCondition());
-                pst.setDouble(6, product.getDiscount());
-                pst.setString(7, product.getDescription());
-                pst.setString(8, product.getCategory().toString());
-                pst.setDouble(9, product.getRebate());
-
-                pst.executeUpdate();
-            }
+//            for (Map.Entry<Long, Product> entry : SaxParserDataStore.wearableTechnologyHashMap.entrySet()) {
+//
+//                Product product = entry.getValue();
+//                System.out.println("-------- Inside Product Map Wearable -- " + product.toString());
+//                String name = ProductCategory.WearableTechnology.toString();
+//
+//
+//                PreparedStatement pst = conn.prepareStatement(insertProductQurey, PreparedStatement.RETURN_GENERATED_KEYS);
+//                pst.setString(1, product.getName());
+//                pst.setDouble(2, product.getPrice());
+//                pst.setString(3, product.getImage());
+//                pst.setString(4, product.getManufacturer().toString());
+//                pst.setString(5, product.getCondition());
+//                pst.setDouble(6, product.getDiscount());
+//                pst.setString(7, product.getDescription());
+//                pst.setString(8, product.getCategory().toString());
+//                pst.setDouble(9, product.getRebate());
+//
+//                pst.executeUpdate();
+//
+//                ResultSet rs = pst.getGeneratedKeys();
+//                if(rs.next()) {
+//                    product.setProductId(rs.getLong(1));
+//                }
+//
+//                try {
+//                    Map<Integer, Integer> acc = product.getAccessories();
+////                    productId int not null,
+////                            accessoryId int not null,
+//                    String insertAccessoryQurey = "INSERT INTO  ProductAccessories(productId,accessoryId)" +
+//                            "VALUES (?,?);";
+//                    for (Map.Entry<Integer, Integer> accentry : acc.entrySet()) {
+//                        PreparedStatement pstacc = conn.prepareStatement(insertAccessoryQurey);
+//                        pstacc.setLong(1, product.getProductId());
+//                        pstacc.setLong(2, accentry.getValue());
+//                        pstacc.executeUpdate();
+//                    }
+//                } catch (Exception et) {
+//                    et.printStackTrace();
+//                }
+//            }
+//
+//            for (Map.Entry<Long, Product> entry : SaxParserDataStore.phoneHashMap.entrySet()) {
+//                String name = ProductCategory.Phone.toString();
+//
+//                Product product = entry.getValue();
+//
+//                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
+//                pst.setString(1, product.getName());
+//                pst.setDouble(2, product.getPrice());
+//                pst.setString(3, product.getImage());
+//                pst.setString(4, product.getManufacturer().toString());
+//                pst.setString(5, product.getCondition());
+//                pst.setDouble(6, product.getDiscount());
+//                pst.setString(7, product.getDescription());
+//                pst.setString(8, product.getCategory().toString());
+//                pst.setDouble(9, product.getRebate());
+//
+//                pst.executeUpdate();
+//
+//
+//            }
+//
+//            for (Map.Entry<Long, Product> entry : SaxParserDataStore.laptopHashMap.entrySet()) {
+//                String name = ProductCategory.Laptop.toString();
+//                Product product = entry.getValue();
+//
+//                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
+//                pst.setString(1, product.getName());
+//                pst.setDouble(2, product.getPrice());
+//                pst.setString(3, product.getImage());
+//                pst.setString(4, product.getManufacturer().toString());
+//                pst.setString(5, product.getCondition());
+//                pst.setDouble(6, product.getDiscount());
+//                pst.setString(7, product.getDescription());
+//                pst.setString(8, product.getCategory().toString());
+//                pst.setDouble(9, product.getRebate());
+//
+//                pst.executeUpdate();
+//            }
+//
+//            for (Map.Entry<Long, Product> entry : SaxParserDataStore.voiceAssistantHashMap.entrySet()) {
+//                String name = ProductCategory.Laptop.toString();
+//                Product product = entry.getValue();
+//
+//                PreparedStatement pst = conn.prepareStatement(insertProductQurey);
+//                pst.setString(1, product.getName());
+//                pst.setDouble(2, product.getPrice());
+//                pst.setString(3, product.getImage());
+//                pst.setString(4, product.getManufacturer().toString());
+//                pst.setString(5, product.getCondition());
+//                pst.setDouble(6, product.getDiscount());
+//                pst.setString(7, product.getDescription());
+//                pst.setString(8, product.getCategory().toString());
+//                pst.setDouble(9, product.getRebate());
+//
+//                pst.executeUpdate();
+//            }
 
         } catch (Exception e) {
             e.printStackTrace();
