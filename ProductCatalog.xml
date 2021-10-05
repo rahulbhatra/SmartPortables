@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ProductCatalog>
+
+    <WearableTechnologyCatalog>
+
+        <wearableTechnology id="1">
+            <name>Fitbit Sense</name>
+            <price>349.99</price>
+            <image>fitbitsense.jpg</image>
+            <manufacturer>FitnessWatches</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+                <accessory>ps4_wc</accessory>
+
+            </accessories>
+            <description>Fitbit Sense is very good product and it lets you enjoy your fitness</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="2">
+            <name>Fitbit Versa2</name>
+            <price>178.95</price>
+            <image>fitbitversa2.jpg</image>
+            <manufacturer>FitnessWatches</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>ps3_wc</accessory>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+
+            </accessories>
+            <description>Be fit have fun.</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="3">
+            <name>Apple Watch Series 6</name>
+            <price>399</price>
+            <image>AppleWatchSeries6.jpeg</image>
+            <manufacturer>SmartWatches</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>xboxone_wc</accessory>
+                <accessory>xboxone_sh</accessory>
+                <accessory>xboxone_kg</accessory>
+                <accessory>xboxone_vb</accessory>
+                <accessory>xboxone_rs</accessory>
+                <accessory>xboxone_mp</accessory>
+                <accessory>xboxone_mc</accessory>
+
+
+            </accessories>
+            <description>An apple a day keeps the doctor away.</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="4">
+            <name>Apple Watch SE</name>
+            <price>279</price>
+            <image>AppleWatchSe.jpg</image>
+            <manufacturer>SmartWatches</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>xbox360_wc</accessory>
+                <accessory>xbox360_sh</accessory>
+                <accessory>xbox360_vb</accessory>
+                <accessory>xbox360_rs</accessory>
+                <accessory>xbox360_mp</accessory>
+                <accessory>xbox360_kg</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="5">
+            <name>Jabra</name>
+            <price>129.99</price>
+            <image>Jebra.jpg</image>
+            <manufacturer>HeadPhones</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="7">
+            <name>Under Armour</name>
+            <price>174.99</price>
+            <image>UnderArmour.jpg</image>
+            <manufacturer>HeadPhones</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Under Armour</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="8">
+            <name>Voxkin</name>
+            <price>23.99</price>
+            <image>VirtualRealityHeadSet.jpg</image>
+            <manufacturer>VirtualReality</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="9">
+            <name>VR Headset Misis</name>
+            <price>31.99</price>
+            <image>VRMisis.jpg</image>
+            <manufacturer>VirtualReality</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="10">
+            <name>Cat Tailer</name>
+            <price>59.00</price>
+            <image>CatTailer.jpg</image>
+            <manufacturer>PetTracker</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+
+        <wearableTechnology id="11">
+            <name>Whistle Go</name>
+            <price>103.90</price>
+            <image>WhistleGo.jpg</image>
+            <manufacturer>PetTracker</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+            <description>This is Wearable Tech</description>
+        </wearableTechnology>
+    </WearableTechnologyCatalog>
+
+    <PhoneCatalog>
+        <phone id="12">
+            <name>iPhone10</name>
+            <price>363.00</price>
+            <image>iphone10.jpg</image>
+            <manufacturer>Apple</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="13">
+            <name>iPhone11 Pro Max</name>
+            <price>859.00</price>
+            <image>iphone11promax.jpg</image>
+            <manufacturer>Apple</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="14">
+            <name>Galaxy Z Fold3 5G</name>
+            <price>899.99</price>
+            <image>galaxyz.jpg</image>
+            <manufacturer>Samsung</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="15">
+            <name>Galaxy Z Flip3 5G</name>
+            <price>399.99</price>
+            <image>galaxyZFlip.jpg</image>
+            <manufacturer>Samsung</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="16">
+            <name>Motorola G Power</name>
+            <price>199.99</price>
+            <image>motorola-g-power.jpg</image>
+            <manufacturer>Motorola</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="17">
+            <name>Motorola One 5G Ace</name>
+            <price>329.99</price>
+            <image>motorola-one.jpg</image>
+            <manufacturer>Motorola</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="18">
+            <name>Google Pixel 4a</name>
+            <price>349.99</price>
+            <image>google-pixel-4a.jpg</image>
+            <manufacturer>Google</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="19">
+            <name>Google Pixel 4a</name>
+            <price>449.99</price>
+            <image>google-pixel-4a.jpg</image>
+            <manufacturer>Google</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="20">
+            <name>OnePlus 8 5G UW</name>
+            <price>799.99</price>
+            <image>one-plus-8-5g.jpg</image>
+            <manufacturer>OnePlus</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+        <phone id="21">
+            <name>OnePlus Nord</name>
+            <price>216.00</price>
+            <image>one-plus-nord.jpg</image>
+            <manufacturer>OnePlus</manufacturer>
+            <condition>New</condition>
+            <discount>10.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Phone</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </phone>
+
+    </PhoneCatalog>
+
+    <LaptopCatalog>
+        <laptop id="21">
+            <name>Macbook Air</name>
+            <price>899.99</price>
+            <image>macbook-m1-air.jpg</image>
+            <manufacturer>Apple</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="22">
+            <name>Macbook Pro</name>
+            <price>1199.99</price>
+            <image>macbook-m1.jpg</image>
+            <manufacturer>Apple</manufacturer>
+            <condition>New</condition>
+            <discount>20.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="23">
+            <name>Surface</name>
+            <price>299.99</price>
+            <image>m1.jpg</image>
+            <manufacturer>MicroSoft</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="24">
+            <name>Surface Pro 4</name>
+            <price>299.99</price>
+            <image>m2.jpg</image>
+            <manufacturer>MicroSoft</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="25">
+            <name>Dell XPS 13</name>
+            <price>1400.00</price>
+            <image>dell-xps-13.jpg</image>
+            <manufacturer>Dell</manufacturer>
+            <condition>New</condition>
+            <discount>25.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="26">
+            <name>Dell XPS 15</name>
+            <price>1400.00</price>
+            <image>dell-xps-15.jpg</image>
+            <manufacturer>Dell</manufacturer>
+            <condition>New</condition>
+            <discount>55.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+        <laptop id="27">
+            <name>HP Envy X360</name>
+            <price>1200.00</price>
+            <image>hp-envy-x360.jpg</image>
+            <manufacturer>HP</manufacturer>
+            <condition>New</condition>
+            <discount>55.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+
+        <laptop id="28">
+            <name>HP Spectre X360</name>
+            <price>1200.00</price>
+            <image>hp-spectre-x360.jpg</image>
+            <manufacturer>HP</manufacturer>
+            <condition>New</condition>
+            <discount>55.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+
+        <laptop id="29">
+            <name>Lenovo IdeaPad 3</name>
+            <price>850.00</price>
+            <image>lenovo-ideapad-3.jpg</image>
+            <manufacturer>Lenovo</manufacturer>
+            <condition>New</condition>
+            <discount>5.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+
+        <laptop id="30">
+            <name>Lenovo Legion 5</name>
+            <price>850.00</price>
+            <image>lenovo-legion-5.jpg</image>
+            <manufacturer>Lenovo</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Laptop</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </laptop>
+
+    </LaptopCatalog>
+
+    <VocieAssistantCatalog>
+        <voiceAssistant id="31">
+            <name>Echo Dot</name>
+            <price>50.00</price>
+            <image>EchoDot.jpg</image>
+            <manufacturer>Amazon</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="32">
+            <name>Echo Studio</name>
+            <price>70.00</price>
+            <image>EchoStudio.jpg</image>
+            <manufacturer>Amazon</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="32">
+            <name>Echo 1</name>
+            <price>700.00</price>
+            <image>EchoStudio.jpg</image>
+            <manufacturer>Rufus</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="33">
+            <name>Echo Studio</name>
+            <price>200.00</price>
+            <image>EchoStudio.jpg</image>
+            <manufacturer>Rufus</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="34">
+            <name>Echo 3</name>
+            <price>300.00</price>
+            <image>EchoStudio.jpg</image>
+            <manufacturer>Navi</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="35">
+            <name>Echo 4</name>
+            <price>400.00</price>
+            <image>EchoStudio.jpg</image>
+            <manufacturer>Navi</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+        <voiceAssistant id="36">
+            <name>Sony</name>
+            <price>149.00</price>
+            <image>sony.jpg</image>
+            <manufacturer>Google</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+
+        <voiceAssistant id="37">
+            <name>Riva</name>
+            <price>149.00</price>
+            <image>riva.jpg</image>
+            <manufacturer>Google</manufacturer>
+            <condition>New</condition>
+            <discount>15.0</discount>
+            <rebate>2.0</rebate>
+            <description>This is Voice Assitant</description>
+            <accessories>
+                <accessory>nintendo_wc</accessory>
+                <accessory>nintendo_sh</accessory>
+            </accessories>
+        </voiceAssistant>
+
+    </VocieAssistantCatalog>
+
+    <AccessoryCatalog>
+
+        <accessory id="38">
+            <name>Controller</name>
+            <price>89.99</price>
+            <image>XBOX controller.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="39">
+            <name>Turtle Beach Headset</name>
+            <price>89.99</price>
+            <image>Turtle Beach Headset.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="40">
+            <name>joystick</name>
+            <price>89.99</price>
+            <image>joystick.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="41">
+            <name>Keypad</name>
+            <price>89.99</price>
+            <image>keypad.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="42">
+            <name>Starterkit</name>
+            <price>89.99</price>
+            <image>starterkit.jpeg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="43">
+            <name>Wireless adpter</name>
+            <price>89.99</price>
+            <image>wirelessadapter.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="44">
+            <name>Wireless</name>
+            <price>89.99</price>
+            <image>wirelessadapter.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+
+        <accessory id="45">
+            <name>XBOX Speeding Wheel</name>
+            <price>89.99</price>
+            <image>XBOX360-SpeedWheel.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="46">
+            <name>XBOX Wireless Adapter</name>
+            <price>89.99</price>
+            <image>xbox360_wa.png</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="xbox360_vb">
+            <name>Remote</name>
+            <price>89.99</price>
+            <image>remote.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+        <accessory id="47">
+            <name>messengerkit</name>
+            <price>89.99</price>
+            <image>messengerkit.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="48">
+            <name>Steering</name>
+            <price>89.99</price>
+            <image>steering.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="49">
+            <name>Charger</name>
+            <price>89.99</price>
+            <image>charger.jpg</image>
+            <manufacturer>Microsoft</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="50">
+            <name>PS Controller</name>
+            <price>89.99</price>
+            <image>XBOX controller.jpg</image>
+            <manufacturer>Sony</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="51">
+            <name>PS Gaming HeadPhones</name>
+            <price>89.99</price>
+            <image>Turtle Beach Headset.jpg</image>
+            <manufacturer>Sony</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="52">
+            <name>Nintendo Controller</name>
+            <price>89.99</price>
+            <image>Wii1.jpg</image>
+            <manufacturer>Nintendo</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+
+        <accessory id="53">
+            <name>Nintendo Racing Controller</name>
+            <price>89.99</price>
+            <image>Wii2.jpg</image>
+            <manufacturer>Nintendo</manufacturer>
+            <condition>New</condition>
+            <discount>40.0</discount>
+            <rebate>2.0</rebate>
+        </accessory>
+    </AccessoryCatalog>
+</ProductCatalog>
