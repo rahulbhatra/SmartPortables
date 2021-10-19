@@ -22,49 +22,22 @@ public class CustomerOrderSQL extends HttpServlet {
         }
     }
 
-    public static void insertCustomerOrder(Connection conn, int orderId,
-                                           String userName,
-                                           String firstName,
-                                           String lastName,
-                                           String address1,
-                                           String address2,
-                                           String city,
-                                           String state,
-                                           String zipCode,
-                                           String phone,
-                                           String deliveryOption,
-                                           String pickupLocation,
-                                           String orderName,
-                                           double orderPrice,
-                                           String creditCardNo,
-                                           double warrantyPrice) {
+    public static void insertCustomerOrder(Connection conn, CustomerOrder customerOrder) {
         try {
 
             String insertIntoCustomerOrderQuery = "INSERT INTO customerOrders(" +
-                    "orderId, userName, firstName, lastName, address1, address2, city, state, zipcode, phone, deliveryOption," +
-                    "pickupLocation, orderName, orderPrice, creditCardNo, warrantyPrice) "
-                    + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+                    "transactionId, userId, orderName, orderPrice, warrantyPrice, productId) "
+                    + "VALUES (?,?,?,?,?,?);";
 
             System.out.println(insertIntoCustomerOrderQuery);
-
             PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
-            //set the parameter for each column and execute the prepared statement
-            pst.setInt(1, orderId);
-            pst.setString(2, userName);
-            pst.setString(3, firstName);
-            pst.setString(4, lastName);
-            pst.setString(5, address1);
-            pst.setString(6, address2);
-            pst.setString(7, city);
-            pst.setString(8, state);
-            pst.setString(9, zipCode);
-            pst.setString(10, phone);
-            pst.setString(11, deliveryOption);
-            pst.setString(12, pickupLocation);
-            pst.setString(13, orderName);
-            pst.setDouble(14, orderPrice);
-            pst.setString(15, creditCardNo);
-            pst.setDouble(16, warrantyPrice);
+
+            pst.setLong(1, customerOrder.getTransactionId());
+            pst.setLong(2, customerOrder.getUserId());
+            pst.setString(3, customerOrder.getOrderName());
+            pst.setDouble(4, customerOrder.getOrderPrice());
+            pst.setDouble(5, customerOrder.getWarrantyPrice());
+            pst.setLong(6, customerOrder.getProductId());
             pst.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,6 +108,7 @@ public class CustomerOrderSQL extends HttpServlet {
                 order = new CustomerOrder(
                         rs.getLong("customerOrderId"),
                         rs.getLong("transactionId"),
+                        rs.getLong("productId"),
                         rs.getLong("userId"),
                         rs.getString("orderName"),
                         rs.getDouble("orderPrice"),
@@ -146,6 +120,37 @@ public class CustomerOrderSQL extends HttpServlet {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static List<CustomerOrder> getCustomerOrders(Connection conn) {
+        List<CustomerOrder> customerOrders = new ArrayList<>();
+
+        try {
+            //select the table
+            String selectOrderQuery = "select * from customerOrders;";
+            System.out.println(selectOrderQuery);
+            PreparedStatement pst = conn.prepareStatement(selectOrderQuery);
+
+            System.out.println(pst.toString());
+            ResultSet rs = pst.executeQuery();
+            CustomerOrder order = null;
+            while(rs.next()) {
+                order = new CustomerOrder(
+                        rs.getLong("customerOrderId"),
+                        rs.getLong("transactionId"),
+                        rs.getLong("productId"),
+                        rs.getLong("userId"),
+                        rs.getString("orderName"),
+                        rs.getDouble("orderPrice"),
+                        rs.getDouble("warrantyPrice"));
+                customerOrders.add(order);
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customerOrders;
     }
 
     public static List<CustomerOrder> getCustomerOrderByUserId(Connection conn, Long userId) {
@@ -165,6 +170,7 @@ public class CustomerOrderSQL extends HttpServlet {
                 CustomerOrder order = new CustomerOrder(
                         rs.getLong("customerOrderId"),
                         rs.getLong("transactionId"),
+                        rs.getLong("productId"),
                         rs.getLong("userId"),
                         rs.getString("orderName"),
                         rs.getDouble("orderPrice"),
@@ -197,6 +203,7 @@ public class CustomerOrderSQL extends HttpServlet {
                 CustomerOrder customerOrder = new CustomerOrder(
                         rs.getLong("customerOrderId"),
                         rs.getLong("transactionId"),
+                        rs.getLong("productId"),
                         rs.getLong("userId"),
                         rs.getString("orderName"),
                         rs.getDouble("orderPrice"),

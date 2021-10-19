@@ -20,9 +20,13 @@ public class Transaction implements Serializable {
     private Double shippingCost;
     private Double totalSales;
     private String creditCardNo;
+    private Integer quantity;
 
 
-    public Transaction(Long transactionId, Long userId, Long storeLocationId, String firstName, String lastName, String address1, String address2, String city, String state, String zipcode, String phone, String deliveryOption, Date purchaseDate, Date shipDate, Double shippingCost, Double totalSales, String creditCardNo) {
+    public Transaction(Long transactionId, Long userId, Long storeLocationId, String firstName, String lastName,
+                       String address1, String address2, String city, String state, String zipcode, String phone,
+                       String deliveryOption, Date purchaseDate, Date shipDate, Double shippingCost, Double totalSales,
+                       String creditCardNo, Integer quantity) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.storeLocationId = storeLocationId;
@@ -40,6 +44,7 @@ public class Transaction implements Serializable {
         this.shippingCost = shippingCost;
         this.totalSales = totalSales;
         this.creditCardNo = creditCardNo;
+        this.quantity = quantity;
     }
 
     public Long getTransactionId() {
@@ -176,5 +181,13 @@ public class Transaction implements Serializable {
 
     public void setCreditCardNo(String creditCardNo) {
         this.creditCardNo = creditCardNo;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

@@ -23,7 +23,7 @@ public class ProductCrud extends HttpServlet {
         Long productId;
         String productName = "";
         String productImage = "";
-        String productManufacturer = "";
+        ProductManufacturers productManufacturer = null;
         String productCondition = "";
         String prod = "";
 
@@ -40,7 +40,7 @@ public class ProductCrud extends HttpServlet {
             productName = request.getParameter("productName");
             productPrice = Double.parseDouble(request.getParameter("productPrice"));
             productImage = request.getParameter("productImage");
-            productManufacturer = request.getParameter("productManufacturer");
+            productManufacturer = ProductManufacturers.getEnum(request.getParameter("productManufacturer"));
             productCondition = request.getParameter("productCondition");
             productDiscount = Double.parseDouble(request.getParameter("productDiscount"));
 
@@ -73,7 +73,7 @@ public class ProductCrud extends HttpServlet {
                     prod = request.getParameter("product");
                     wearableTechMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.WearableTechnology);
                     if (wearableTechMap.containsKey(prod)) {
-                        accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
+                        accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessory);
                         if (accessoriesMap.containsKey(productId)) {
                             msg = "Product already available";
                         }
@@ -90,9 +90,9 @@ public class ProductCrud extends HttpServlet {
             if (msg.equals("good")) {
                 try {
                     Product product = new Product(productId, productName, productPrice, productImage,
-                            ProductManufacturers.getEnum(productManufacturer), productCondition,
-                            productDiscount, "", productCategory, 0);
-                    msg = MySqlDataStoreUtilities.addProducts(product);
+                            productManufacturer, productCondition, productDiscount, "", productCategory, 0.0);
+                    product = MySqlDataStoreUtilities.addProducts(product);
+                    msg = "Product Got Inserted";
                 } catch (Exception e) {
                     msg = "Product cannot be inserted";
                 }
@@ -121,9 +121,9 @@ public class ProductCrud extends HttpServlet {
                 if (!accessoriesMap.containsKey(productId)) {
                     msg = "Product not available";
                 }
-            } else if (ProductCategory.Accessories.equals(productCategory)) {
+            } else if (ProductCategory.Accessory.equals(productCategory)) {
 
-                accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
+                accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessory);
                 if (!accessoriesMap.containsKey(productId)) {
                     msg = "Product not available";
                 }
@@ -132,7 +132,10 @@ public class ProductCrud extends HttpServlet {
             if (msg.equals("good")) {
 
                 try {
-                    msg = MySqlDataStoreUtilities.updateProducts(productId, productName, productPrice, productImage, productManufacturer, productCondition, productDiscount);
+                    Product oldProduct = MySqlDataStoreUtilities.getProduct(productId);
+                    Product product = new Product(productId, productName, productPrice, productImage,
+                            productManufacturer, productCondition, productDiscount, oldProduct.getDescription(), oldProduct.getCategory(), oldProduct.getRebate());
+                    msg = MySqlDataStoreUtilities.updateProducts(product);
                 } catch (Exception e) {
                     msg = "Product cannot be updated";
                 }
@@ -157,7 +160,7 @@ public class ProductCrud extends HttpServlet {
                 msg = "good";
             }
 
-            accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
+            accessoriesMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessory);
             if (accessoriesMap.containsKey(productId)) {
                 msg = "good";
             }

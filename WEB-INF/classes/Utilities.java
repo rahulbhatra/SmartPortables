@@ -12,11 +12,11 @@ import java.io.*;
 
 @WebServlet("/Utilities")
 
-/* 
+/*
 	Utilities class contains class variables of type HttpServletRequest, PrintWriter,String and HttpSession.
 
 	Utilities class has a constructor with  HttpServletRequest, PrintWriter variables.
-	  
+
 */
 
 public class Utilities extends HttpServlet {
@@ -47,15 +47,19 @@ public class Utilities extends HttpServlet {
                     case Customer:
                         result += "<li><a href='ViewOrder'><span class='glyphicon'>ViewOrder</span></a></li>";
                         result += "<li><a href='Account'><span class='glyphicon'>Account</span></a></li>";
+                        result += "<li><a href='Cart'><span class='glyphicon'>Cart(" + CartCount() + ")</span></a></li>";
                         break;
                     case StoreManager:
                         result += "<li><a href='CreateProduct'><span class='glyphicon'>CreateProduct</span></a></li>"
-                                + "<li><a href='DataVisualization'><span class='glyphicon'>Trending</span></a></li>"
+                                + "<li><a href='Inventory?inventoryType='><span class='glyphicon'>Inventory</span></a></li>"
+                                + "<li><a href='SalesReport?reportType='><span class='glyphicon'>Sales Report</span></a></li>"
+                                + "<li><a href='DataVisualization'><span class='glyphicon'>DataVisualization</span></a></li>"
                                 + "<li><a href='DataAnalytics'><span class='glyphicon'>DataAnalytics</span></a></li>";
                         break;
                     case SalesMan:
                         result += "<li><a href='CreateUser'><span class='glyphicon'>CreateUser</span></a></li>";
                         result += "<li><a href='ViewCustomerOrder'><span class='glyphicon'>View Orders</span></a></li>";
+                        result += "<li><a href='Cart'><span class='glyphicon'>Cart(" + CartCount() + ")</span></a></li>";
                         break;
                 }
 
@@ -65,10 +69,11 @@ public class Utilities extends HttpServlet {
                 result += "<li><a href='ViewOrder'><span class='glyphicon'>View Order</span></a></li>";
                 result += "<li><a href='Login'><span class='glyphicon'>Login</span></a></li>";
             }
-            result = result + "<li><a href='Cart'><span class='glyphicon'>Cart(" + CartCount() + ")</span></a></li></ul></div></div><div id='page'>";
+            result += "</ul></div></div><div id='page'>";
             pw.print(result);
-        } else
+        } else {
             pw.print(result);
+        }
     }
 
 
@@ -227,7 +232,7 @@ public class Utilities extends HttpServlet {
         ArrayList<OrderItem> orderItems = OrdersHashMap.orders.get(username());
         Product product = MySqlDataStoreUtilities.getProduct(productId);
 
-        OrderItem orderitem = new OrderItem(product.getName(), product.getPrice(), product.getImage(),
+        OrderItem orderitem = new OrderItem(productId, product.getProductName(), product.getPrice(), product.getImage(),
                 product.getManufacturer(), warrantyIncluded, product.getDiscount(), product.getRebate());
         orderItems.add(orderitem);
 
@@ -250,12 +255,24 @@ public class Utilities extends HttpServlet {
         }
     }
 
-    public String storeReview(String productname, String producttype, String productmaker, String reviewrating, String reviewdate, String reviewtext, String reatilerpin, String price, String city) {
-        String message = MongoDBDataStoreUtilities.insertReview(productname, username(), producttype, productmaker, reviewrating, reviewdate, reviewtext, reatilerpin, price, city);
-        if (!message.equals("Successfull")) {
-            return "UnSuccessfull";
+    public boolean storeReview(Long productId, String productName, String productCategory, double productPrice,
+                               String productManufacturer, boolean productIsOnSale, Long userId, String userName, double userAge,
+                               String userGender, String userOccupation, Long storeLocationId,
+                               String storeStreetAddress, String storeCity, String storeState, String storeZipCode,
+                               Integer reviewRating, String reviewDate, String reviewText, String retailerZipCode, String retailerCity) {
+
+        boolean isStored = MongoDBDataStoreUtilities.insertReview(productId, productName, productCategory
+                , productPrice, productManufacturer, productIsOnSale,
+                userId, userName, userAge, userGender,
+                userOccupation, storeLocationId,
+                storeStreetAddress, storeCity, storeState,
+                storeZipCode, reviewRating,
+                reviewDate, reviewText, retailerZipCode, retailerCity);
+
+        if (!isStored) {
+            return false;
         } else {
-            HashMap<String, ArrayList<Review>> reviews = new HashMap<String, ArrayList<Review>>();
+            HashMap<Long, ArrayList<Review>> reviews = new HashMap<>();
             try {
                 reviews = MongoDBDataStoreUtilities.selectReview();
             } catch (Exception e) {
@@ -266,70 +283,32 @@ public class Utilities extends HttpServlet {
             }
             // if there exist product review already add it into same list for productname or create a new record with product name
 
-            if (!reviews.containsKey(productname)) {
+            if (!reviews.containsKey(productId)) {
                 ArrayList<Review> arr = new ArrayList<Review>();
-                reviews.put(productname, arr);
+                reviews.put(productId, arr);
             }
-            ArrayList<Review> listReview = reviews.get(productname);
-            Review review = new Review(productname, username(), producttype, productmaker, reviewrating, reviewdate, reviewtext, reatilerpin, price, city);
+            ArrayList<Review> listReview = reviews.get(productId);
+            Review review = new Review(productId, productName, productCategory
+                    , productPrice, productManufacturer, productIsOnSale,
+                    userId, userName, userAge, userGender,
+                    userOccupation, storeLocationId,
+                    storeStreetAddress, storeCity, storeState,
+                    storeZipCode, reviewRating,
+                    reviewDate, reviewText, retailerZipCode, retailerCity);
             listReview.add(review);
 
             // add Reviews into database
 
-            return "Successfull";
+            return true;
         }
     }
 
-//    public ArrayList<String> getProducts() {
-//        ArrayList<String> ar = new ArrayList<String>();
-//        for (Map.Entry<String, Product> entry : getWearableTechnologies().entrySet()) {
-//            ar.add(entry.getValue().getName());
-//        }
-//        return ar;
-//    }
-
-    /* getProducts Functions returns the Arraylist of games in the store.*/
-
-//    public ArrayList<String> getProductsGame() {
-//        ArrayList<String> ar = new ArrayList<String>();
-//        for (Map.Entry<String, Product> entry : getPhones().entrySet()) {
-//            ar.add(entry.getValue().getName());
-//        }
-//        return ar;
-//    }
-
-    /* getProducts Functions returns the Arraylist of Tablets in the store.*/
-
-//    public ArrayList<String> getProductsTablets() {
-//        ArrayList<String> ar = new ArrayList<String>();
-//        for (Map.Entry<String, Product> entry : getLaptops().entrySet()) {
-//            ar.add(entry.getValue().getName());
-//        }
-//        return ar;
-//    }
-
-    public void fileUpload(Part filePart, String fileName, String productCategory) throws IOException {
+    public void fileUpload(Part filePart, String fileName) throws IOException {
         String TOMCAT_HOME = System.getProperty("catalina.home");
-        String fileLocation = TOMCAT_HOME + "/webapps/Tutorial_1/images";
-
-        switch (productCategory.toLowerCase()) {
-            case "wearabletechnology":
-                fileLocation += "/wearableTechnology";
-                break;
-            case "laptop":
-                fileLocation += "/laptop";
-                break;
-            case "phone":
-                fileLocation += "/phone";
-                break;
-            case "voiceassistant":
-                fileLocation += "/voiceAssistant";
-                break;
-        }
+        String fileLocation = TOMCAT_HOME + "/webapps/Tutorial_3/images/ProductImages";
 
         OutputStream out = null;
         InputStream filecontent = null;
-
         try {
             out = new FileOutputStream(new File(fileLocation + File.separator
                     + fileName));
@@ -378,5 +357,73 @@ public class Utilities extends HttpServlet {
         return Arrays.asList(array);
     }
 
+    public static boolean isNullOrEmptyOrWhiteSpaceOnly(String string) {
+        if (string == null || string.trim().isEmpty()) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Date addDays(Date currentDate, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentDate);
+        calendar.add(Calendar.DAY_OF_MONTH, days);
+        return calendar.getTime();
+    }
+
+    public static Map<Long, ProductSales> getProductsAndSales() {
+        List<Product> products = MySqlDataStoreUtilities.getProducts();
+        List<CustomerOrder> customerOrders = MySqlDataStoreUtilities.getCustomerOrders();
+
+        Map<Long, ProductSales> productSalesMap = new HashMap<>();
+
+        for (Product product: products) {
+            for(CustomerOrder customerOrder: customerOrders) {
+                System.out.println(customerOrder.getProductId() + " " + product.getProductId());
+                if(customerOrder.getProductId().equals(product.getProductId())) {
+                    if(!productSalesMap.containsKey(product.getProductId())) {
+                        productSalesMap.put(product.getProductId(), new ProductSales(
+                                product.getProductId(), product.getProductName(),
+                                product.getPrice(), 0, 0
+                        ));
+                    }
+                    ProductSales productSales = productSalesMap.get(product.getProductId());
+                    productSales.setProductSold(productSales.getProductSold() + 1);
+                    productSales.setTotalSales(productSales.getTotalSales() + product.getPrice());
+                    productSalesMap.put(product.getProductId(), productSales);
+                    System.out.println("I am inside the loop");
+                }
+            }
+        }
+
+        System.out.println("-------data kyu nahi aa raha ------------" + productSalesMap.values().toString());
+        return productSalesMap;
+    }
+
+    public static Map<Date, Double> getTotalDailySales() {
+        List<Transaction> transactions = MySqlDataStoreUtilities.getTransactions();
+        Map<Date, Double> totalDailyTransactions = new HashMap<>();
+
+        for(Transaction transaction: transactions) {
+            if(!totalDailyTransactions.containsKey(transaction.getPurchaseDate())) {
+                totalDailyTransactions.put(transaction.getPurchaseDate(), new Double(0));
+            }
+            Double totalSales = totalDailyTransactions.get(transaction.getPurchaseDate());
+            totalSales += transaction.getTotalSales();
+            totalDailyTransactions.put(transaction.getPurchaseDate(), totalSales);
+        }
+
+        return totalDailyTransactions;
+    }
+
+
+    public static Map<String, Product> getProductNameValueMap() {
+        List<Product> products = MySqlDataStoreUtilities.getProducts();
+        Map<String, Product> productMap = new HashMap<>();
+        for(Product product: products) {
+            productMap.put(product.getProductName(), product);
+        }
+        return productMap;
+    }
 
 }

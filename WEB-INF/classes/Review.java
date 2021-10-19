@@ -1,5 +1,5 @@
-import java.io.IOException;
 import java.io.*;
+import java.util.Date;
 
 
 /* 
@@ -10,111 +10,231 @@ import java.io.*;
 	Review class contains getters and setters for username,productname,reviewtext,reviewdate,reviewrating
 */
 
-public class Review implements Serializable{
-	private String productName;
-	private String userName;
-	private String productType;
-	private String productMaker;
-	private String reviewRating;
-	private String reviewDate;
-	private String reviewText;
-	private String retailerpin;
-	private String price;
-	private String retailercity;
-	
-	public Review (String productName,String userName,String productType,String productMaker,String reviewRating,String reviewDate,String reviewText,String retailerpin,String price,String retailercity){
-		this.productName=productName;
-		this.userName=userName;
-		this.productType=productType;
-		this.productMaker=productMaker;
-	 	this.reviewRating=reviewRating;
-		this.reviewDate=reviewDate;
-	 	this.reviewText=reviewText;
-		this.retailerpin=retailerpin;
-		this.price= price;
-		this.retailercity= retailercity;
-	}
+public class Review implements Serializable {
+    private Long productId;
+    private String productName;
+    private String productCategory;
+    private double productPrice;
+    private String productManufacturer;
+    private boolean productIsOnSale;
 
-	public Review(String productName, String retailerpin, String reviewRating, String reviewText) {
-       this.productName = productName;
-       this.retailerpin = retailerpin;
-       this.reviewRating = reviewRating;
-       this.reviewText = reviewText;
+    private Long userId;
+    private String userName;
+    private double userAge;
+    private String userGender;
+    private String userOccupation;
+
+    private Long storeLocationId;
+    private String storeStreetAddress;
+    private String storeCity;
+    private String storeState;
+    private String storeZipCode;
+
+    private Integer reviewRating;
+    private String reviewDate;
+    private String reviewText;
+    private String retailerZipCode;
+    private String retailerCity;
+
+    public Review(Long productId, String productName, String productCategory, double productPrice,
+                  String productManufacturer, boolean productIsOnSale, Long userId, String userName, double userAge,
+                  String userGender, String userOccupation, Long storeLocationId,
+                  String storeStreetAddress, String storeCity, String storeState, String storeZipCode,
+                  Integer reviewRating, String reviewDate, String reviewText, String retailerZipCode, String retailerCity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productCategory = productCategory;
+        this.productPrice = productPrice;
+        this.productManufacturer = productManufacturer;
+        this.productIsOnSale = productIsOnSale;
+        this.userId = userId;
+        this.userName = userName;
+        this.userAge = userAge;
+        this.userGender = userGender;
+        this.userOccupation = userOccupation;
+        this.storeLocationId = storeLocationId;
+        this.storeStreetAddress = storeStreetAddress;
+        this.storeCity = storeCity;
+        this.storeState = storeState;
+        this.storeZipCode = storeZipCode;
+        this.reviewRating = reviewRating;
+        this.reviewDate = reviewDate;
+        this.reviewText = reviewText;
+        this.retailerZipCode = retailerZipCode;
+        this.retailerCity = retailerCity;
     }
 
-	public String getProductName() {
-		return productName;
-	}
-	public String getUserName() {
-		return userName;
-	}
+    public Review(Long productId, int reviewRating, String retailerZipCode) {
+        this.productId = productId;
+        this.reviewRating = reviewRating;
+        this.retailerZipCode = retailerZipCode;
+    }
 
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
+    public Long getProductId() {
+        return productId;
+    }
 
-	public String getProductType() {
-		return productType;
-	}
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
+    public Long getUserId() {
+        return userId;
+    }
 
-	public String getProductMaker() {
-		return productMaker;
-	}
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
-	public void setProductMaker(String productMaker) {
-		this.productMaker = productMaker;
-	}
+    public double getUserAge() {
+        return userAge;
+    }
 
-	public String getReviewRating() {
-		return reviewRating;
-	}
+    public void setUserAge(double userAge) {
+        this.userAge = userAge;
+    }
 
-	public String getReviewText() {
-		return reviewText;
-	}
-	public void setReviewText(String reviewText) {
-		this.reviewText = reviewText;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public String getUserGender() {
+        return userGender;
+    }
 
-	public void setReviewRating(String reviewRating) {
-		this.reviewRating = reviewRating;
-	}
-	public String getReviewDate() {
-		return reviewDate;
-	}
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
+    }
 
-	public void setReviewDate(String reviewDate) {
-		this.reviewDate = reviewDate;
-	}
-    
-		public String getRetailerPin() {
-		return retailerpin;
-	}
+    public String getUserOccupation() {
+        return userOccupation;
+    }
 
-	public void setRetailerPin(String retailerpin) {
-		this.retailerpin = retailerpin;
-	}
-			public String getRetailerCity() {
-		return retailercity;
-	}
+    public void setUserOccupation(String userOccupation) {
+        this.userOccupation = userOccupation;
+    }
 
-	public void setRetailerCity(String retailercity) {
-		this.retailercity = retailercity;
-	}
-	
-			public String getPrice() {
-		return price;
-	}
+    public Long getStoreLocationId() {
+        return storeLocationId;
+    }
 
-	public void setPrice(String price) {
-		this.price = price;
-	}
+    public void setStoreLocationId(Long storeLocationId) {
+        this.storeLocationId = storeLocationId;
+    }
 
+    public String getStoreStreetAddress() {
+        return storeStreetAddress;
+    }
+
+    public void setStoreStreetAddress(String storeStreetAddress) {
+        this.storeStreetAddress = storeStreetAddress;
+    }
+
+    public String getStoreCity() {
+        return storeCity;
+    }
+
+    public void setStoreCity(String storeCity) {
+        this.storeCity = storeCity;
+    }
+
+    public String getStoreState() {
+        return storeState;
+    }
+
+    public void setStoreState(String storeState) {
+        this.storeState = storeState;
+    }
+
+    public String getStoreZipCode() {
+        return storeZipCode;
+    }
+
+    public void setStoreZipCode(String storeZipCode) {
+        this.storeZipCode = storeZipCode;
+    }
+
+    public Integer getReviewRating() {
+        return reviewRating;
+    }
+
+    public void setReviewRating(Integer reviewRating) {
+        this.reviewRating = reviewRating;
+    }
+
+    public String getReviewDate() {
+        return reviewDate;
+    }
+
+    public void setReviewDate(String reviewDate) {
+        this.reviewDate = reviewDate;
+    }
+
+    public String getReviewText() {
+        return reviewText;
+    }
+
+    public void setReviewText(String reviewText) {
+        this.reviewText = reviewText;
+    }
+
+    public String getRetailerZipCode() {
+        return retailerZipCode;
+    }
+
+    public void setRetailerZipCode(String retailerZipCode) {
+        this.retailerZipCode = retailerZipCode;
+    }
+
+    public String getRetailerCity() {
+        return retailerCity;
+    }
+
+    public void setRetailerCity(String retailerCity) {
+        this.retailerCity = retailerCity;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductCategory() {
+        return productCategory;
+    }
+
+    public void setProductCategory(String productCategory) {
+        this.productCategory = productCategory;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
+    }
+
+    public String getProductManufacturer() {
+        return productManufacturer;
+    }
+
+    public void setProductManufacturer(String productManufacturer) {
+        this.productManufacturer = productManufacturer;
+    }
+
+    public boolean isProductIsOnSale() {
+        return productIsOnSale;
+    }
+
+    public void setProductIsOnSale(boolean productIsOnSale) {
+        this.productIsOnSale = productIsOnSale;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }

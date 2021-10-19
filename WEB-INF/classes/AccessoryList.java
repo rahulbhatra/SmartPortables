@@ -21,7 +21,7 @@ public class AccessoryList extends HttpServlet {
         Map<Long, Product> productHashMap = new HashMap<>();
         try {
             productHashMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.WearableTechnology);
-			allAccessoriesHashMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessories);
+			allAccessoriesHashMap = MySqlDataStoreUtilities.getProductsByCategory(ProductCategory.Accessory);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,25 +53,25 @@ public class AccessoryList extends HttpServlet {
                 if (i % 2 == 1) pw.print("<tr>");
 
                 pw.print("<td><div id='shop_item'>");
-                pw.print("<h3>" + accessory.getName() + "</h3>");
+                pw.print("<h3>" + accessory.getProductName() + "</h3>");
                 pw.print("<strong>" + accessory.getPrice() + "$</strong><ul>");
                 pw.print("<li id='item'><img src='images/accessories/" + accessory.getImage() + "' alt='' /></li>");
                 pw.print("<li><form method='post' action='Cart'>" +
                         "<input type='hidden' name='name' value='" + acc.getValue() + "'>" +
                         "<input type='hidden' name='type' value='accessories'>" +
                         "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
-                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getProductName() + "'>" +
                         "<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
-                pw.print("<li><form method='post' action='WriteReview'>" + "<input type='hidden' name='name' value='" + accessory.getName() + "'>" +
+                pw.print("<li><form method='post' action='WriteReview'>" + "<input type='hidden' name='name' value='" + accessory.getProductName() + "'>" +
                         "<input type='hidden' name='type' value='accessories'>" +
                         "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
-                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getProductName() + "'>" +
                         "<input type='hidden' name='price' value='" + accessory.getPrice() + "'>" +
                         "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
-                pw.print("<li><form method='post' action='ViewReview'>" + "<input type='hidden' name='name' value='" + accessory.getName() + "'>" +
+                pw.print("<li><form method='post' action='ViewReview'>" + "<input type='hidden' name='name' value='" + accessory.getProductName() + "'>" +
                         "<input type='hidden' name='type' value='accessories'>" +
                         "<input type='hidden' name='maker' value='" + product.getManufacturer().toString() + "'>" +
-                        "<input type='hidden' name='access' value='" + product.getName() + "'>" +
+                        "<input type='hidden' name='access' value='" + product.getProductName() + "'>" +
                         "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
 
                 pw.print("</ul></div></td>");

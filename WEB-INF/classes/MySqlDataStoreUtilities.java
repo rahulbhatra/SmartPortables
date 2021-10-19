@@ -36,14 +36,19 @@ public class MySqlDataStoreUtilities {
         return ProductDetailsSQL.getProduct(conn, productId);
     }
 
-    public static String addProducts(Product product) {
+    public static List<Product> getProducts() {
+        getConnection();
+        return ProductDetailsSQL.getProducts(conn);
+    }
+
+    public static Product addProducts(Product product) {
         getConnection();
         return ProductDetailsSQL.addProducts(conn, product);
     }
 
-    public static String updateProducts(Long productId, String productName, double productPrice, String productImage, String productManufacturer, String productCondition, double productDiscount) {
+    public static String updateProducts(Product product) {
         getConnection();
-        return ProductDetailsSQL.updateProducts(conn, productId, productName, productPrice, productImage, productManufacturer, productCondition, productDiscount);
+        return ProductDetailsSQL.updateProducts(conn, product);
     }
 
     public static String deleteProducts(Long productId) {
@@ -71,32 +76,18 @@ public class MySqlDataStoreUtilities {
     }
 
     public static void insertCustomerOrder(CustomerOrder customerOrder) {
-        try {
-
-            getConnection();
-
-            String insertIntoCustomerOrderQuery = "INSERT INTO customerOrders(" +
-                    "transactionId, userId, orderName, orderPrice, warrantyPrice) "
-                    + "VALUES (?,?,?,?,?);";
-
-            System.out.println(insertIntoCustomerOrderQuery);
-
-            PreparedStatement pst = conn.prepareStatement(insertIntoCustomerOrderQuery);
-            //set the parameter for each column and execute the prepared statement
-            pst.setLong(1, customerOrder.getTransactionId());
-            pst.setLong(2, customerOrder.getUserId());
-            pst.setString(3, customerOrder.getOrderName());
-            pst.setDouble(4, customerOrder.getOrderPrice());
-            pst.setDouble(5, customerOrder.getWarrantyPrice());
-            pst.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        getConnection();
+        CustomerOrderSQL.insertCustomerOrder(conn, customerOrder);
     }
 
     public static CustomerOrder getCustomerOrder(Long customerOrderId) {
         getConnection();
         return CustomerOrderSQL.getCustomerOrder(conn, customerOrderId);
+    }
+
+    public static List<CustomerOrder> getCustomerOrders() {
+        getConnection();
+        return CustomerOrderSQL.getCustomerOrders(conn);
     }
 
     public static HashMap<Integer, ArrayList<CustomerOrder>> selectCustomerOrders() {
@@ -110,9 +101,11 @@ public class MySqlDataStoreUtilities {
     }
 
 
-    public static void insertUser(String userName, String password, String rePassword, String userType) {
+    public static void insertUser(String userName, String password, String rePassword, String userType,
+                                  Integer userAge,
+                                  String userGender, String userOccupation) {
         getConnection();
-        RegistrationSQL.insertUser(conn, userName, password, rePassword, userType);
+        RegistrationSQL.insertUser(conn, userName, password, rePassword, userType, userAge, userGender, userOccupation);
     }
 
     public static Map<String, User> selectUser() {
@@ -136,7 +129,7 @@ public class MySqlDataStoreUtilities {
             while (rs.next()) {
 
                 StoreLocation storeLocation = new StoreLocation(
-                        rs.getInt("storeLocationId"),
+                        rs.getLong("storeLocationId"),
                         rs.getString("streetAddress"),
                         rs.getString("city"),
                         rs.getString("state"),
@@ -162,7 +155,7 @@ public class MySqlDataStoreUtilities {
             while (rs.next()) {
 
                 storeLocation = new StoreLocation(
-                        rs.getInt("storeLocationId"),
+                        rs.getLong("storeLocationId"),
                         rs.getString("streetAddress"),
                         rs.getString("city"),
                         rs.getString("state"),
@@ -183,6 +176,11 @@ public class MySqlDataStoreUtilities {
         return TransactionSQL.getTransaction(conn, transactionId);
     }
 
+    public static List<Transaction> getTransactions() {
+        getConnection();
+        return TransactionSQL.getTransactions(conn);
+    }
+
     public static Transaction addTransaction(Transaction transaction) {
         getConnection();
         return TransactionSQL.addTransaction(conn, transaction);
@@ -193,5 +191,45 @@ public class MySqlDataStoreUtilities {
         TransactionSQL.updateTransaction(conn, transaction);
     }
 
+    public static Customer getCustomerByUserId(Long userId) {
+        getConnection();
+        return CustomerSQL.getCustomer(conn, userId);
+    }
+
+    public static Customer insertCustomer(Customer customer) {
+        getConnection();
+        return CustomerSQL.insertCustomer(conn, customer);
+    }
+
+    public static void updateCustomer(Customer customer) {
+        getConnection();
+        CustomerSQL.updateCustomer(conn, customer);
+    }
+
+    public static List<Long> getProductAccessories(Long productId) {
+        getConnection();
+        return ProductAccessorySQL.getProductAccessories(conn, productId);
+    }
+
+    public static void insertProductAccessory(Long productId, Long accessoryId) {
+        getConnection();
+        ProductAccessorySQL.insertProductAccessory(conn, productId, accessoryId);
+    }
+
+
+    public static void deleteProductAccessory(Long productId, Long accessoryId) {
+        getConnection();
+        ProductAccessorySQL.deleteProductAccessory(conn, productId, accessoryId);
+    }
+
+    public static List<Mostsoldzip> getTopNMostSoldZip(int n) {
+        getConnection();
+        return TransactionSQL.getTopNMostSoldZip(conn, n);
+    }
+
+    public static List<MostSold> getTopNMostSold(int n) {
+        getConnection();
+        return TransactionSQL.getTopNMostSold(conn, n);
+    }
 
 }	

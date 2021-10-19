@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 @WebServlet("/Product")
 public class Product extends HttpServlet{
 	private Long productId;
-	private String name;
+	private String productName;
 	private double price;
 	private String image;
 	private ProductManufacturers manufacturer;
@@ -16,11 +16,12 @@ public class Product extends HttpServlet{
 	Map<Integer, Integer> accessories = new HashMap<>();
 	private ProductCategory category;
 	private double rebate;
+	private Integer count = 10;
 
 	public Product(Long productId, String name, double price, String image, ProductManufacturers manufacturer, String condition,
 				   double discount, String description, ProductCategory category, double rebate){
 		this.productId = productId;
-		this.name=name;
+		this.productName =name;
 		this.price=price;
 		this.image=image;
 		this.manufacturer = manufacturer;
@@ -45,11 +46,11 @@ public class Product extends HttpServlet{
 		this.productId = productId;
 	}
 
-	public String getName() {
-		return name;
+	public String getProductName() {
+		return productName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 	public double getPrice() {
 		return price;
@@ -114,11 +115,20 @@ public class Product extends HttpServlet{
 		this.rebate = rebate;
 	}
 
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
 	@Override
 	public String toString() {
 		return "Product{" +
 				"id='" + productId + '\'' +
-				", name='" + name + '\'' +
+				", name='" + productName + '\'' +
 				", price=" + price +
 				", image='" + image + '\'' +
 				", manufacturer=" + manufacturer +

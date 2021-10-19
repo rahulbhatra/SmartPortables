@@ -91,11 +91,11 @@ public class PrevAccessory extends HttpServlet {
 		for(Map.Entry<Long, Product> entry : hm.entrySet())
 		{
 			Product console = entry.getValue();
-			if (console.getName().equals(ProductName))
+			if (console.getProductName().equals(ProductName))
 			{
 			pw.print("<tr>");
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+console.getName()+"</h3>");
+			pw.print("<h3>"+console.getProductName()+"</h3>");
 			pw.print("<strong>$"+console.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/consoles/"+console.getImage()+"' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +
@@ -150,7 +150,7 @@ public class PrevAccessory extends HttpServlet {
 		    
 			
 			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+accessory.getName()+"</h3>");
+			pw.print("<h3>"+accessory.getProductName()+"</h3>");
 			pw.print("<strong>"+accessory.getPrice()+"$</strong><ul>");
 			pw.print("<li id='item'><img src='images/accessories/"+accessory.getImage()+"' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +

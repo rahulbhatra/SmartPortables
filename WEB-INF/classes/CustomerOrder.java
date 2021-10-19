@@ -4,18 +4,20 @@ import java.io.*;
 public class CustomerOrder implements Serializable{
 	private Long customerOrderId;
 	private Long transactionId;
+	private Long productId;
 	private Long userId;
 	private String orderName;
 	private Double orderPrice;
 	private Double warrantyPrice;
 
-	public CustomerOrder(Long customerOrderId, Long transactionId, Long userId, String orderName, Double orderPrice, Double warrantyPrice) {
+	public CustomerOrder(Long customerOrderId, Long transactionId, Long productId, Long userId, String orderName, Double orderPrice, Double warrantyPrice) {
 		this.customerOrderId = customerOrderId;
 		this.transactionId = transactionId;
 		this.userId = userId;
 		this.orderName = orderName;
 		this.orderPrice = orderPrice;
 		this.warrantyPrice = warrantyPrice;
+		this.productId = productId;
 	}
 
 	public Long getCustomerOrderId() {
@@ -64,5 +66,13 @@ public class CustomerOrder implements Serializable{
 
 	public void setWarrantyPrice(Double warrantyPrice) {
 		this.warrantyPrice = warrantyPrice;
+	}
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
 	}
 }

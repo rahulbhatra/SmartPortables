@@ -1,13 +1,13 @@
 import java.io.Serializable;
 
 public class StoreLocation implements Serializable {
-    private Integer storeLocationId;
+    private Long storeLocationId;
     private String streetAddress;
     private String city;
     private String state;
     private String zipCode;
 
-    public StoreLocation(Integer storeLocationId, String streetAddress, String city, String state, String zipCode) {
+    public StoreLocation(Long storeLocationId, String streetAddress, String city, String state, String zipCode) {
         this.storeLocationId = storeLocationId;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -15,11 +15,11 @@ public class StoreLocation implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public Integer getStoreLocationId() {
+    public Long getStoreLocationId() {
         return storeLocationId;
     }
 
-    public void setStoreLocationId(Integer storeLocationId) {
+    public void setStoreLocationId(Long storeLocationId) {
         this.storeLocationId = storeLocationId;
     }
 

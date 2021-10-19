@@ -42,12 +42,12 @@ public class ViewCustomerOrder extends HttpServlet {
 
         pw.print("<table style='width: 100%'>");
 
-        pw.print("<tr class='createContentRow'>");
-        pw.print("<td class='loginAsCustomerLabel'>");
+        pw.print("<tr class='rowTable'>");
+        pw.print("<td class='leftDataTable'>");
         pw.print("Select UserName:");
         pw.print("</td>");
 
-        pw.print("<td class='createContentInput'>");
+        pw.print("<td class='rightDataTable'>");
 
         pw.print("<select style='radius: 20px; width: 100%;' name='userId' id='userId'>");
         for (User user : userHashMap.values()) {
@@ -61,7 +61,7 @@ public class ViewCustomerOrder extends HttpServlet {
         pw.print("</tr>");
         pw.print("</table>");
 
-        pw.print("<div class='buttonContainer'><button class='loginAsCustomerButton' type='submit' value='Submit'>Search Orders</button></div>");
+        pw.print("<div class='buttonContainer'><button class='classicButton' type='submit' value='Submit'>Search Orders</button></div>");
         pw.print("</form>");
 
         List<CustomerOrder> customerOrders = MySqlDataStoreUtilities.getCustomerOrdersByUserId(userId);
@@ -93,12 +93,12 @@ public class ViewCustomerOrder extends HttpServlet {
 
                 pw.print("<td style='display:inline-flex;'><form style='margin:auto' action='EditCustomerOrder' method='get'>" +
                         "<input type='hidden' name='customerOrderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
-                        "<button class='mainButton' type='submit' value='submit'>Edit</button>" +
+                        "<button class='classicButton' type='submit' value='submit'>Edit</button>" +
                         "</form>");
 
                 pw.print("<form style='margin:auto' action='RemoveCustomerOrder' method='post'>" +
                         "<input type='hidden' name='customerOrderId' value='" + customerOrder.getCustomerOrderId() + "'>" +
-                        "<button class='mainButton' type='submit' value='submit'>Remove</button>" +
+                        "<button class='classicButton' type='submit' value='submit'>Remove</button>" +
                         "</form>" +
                         "</td>");
 

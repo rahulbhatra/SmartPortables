@@ -32,11 +32,7 @@ public class EditCustomerOrder extends HttpServlet {
                 return;
             }
 
-
-            //get the order product details	on clicking submit the form will be passed to submitorder page
-
             Long customerOrderId = Long.parseLong(request.getParameter("customerOrderId"));
-
 
             System.out.println( "---- Inside Edit Customer ------------");
             CustomerOrder customerOrder = MySqlDataStoreUtilities.getCustomerOrder(customerOrderId);
@@ -173,8 +169,6 @@ public class EditCustomerOrder extends HttpServlet {
             return;
         }
         Long customerOrderId = Long.parseLong(request.getParameter("customerOrderId"));
-
-        String customerName = request.getParameter("customerName");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String address1 = request.getParameter("address1");
@@ -184,7 +178,7 @@ public class EditCustomerOrder extends HttpServlet {
         String zipCode = request.getParameter("zipCode");
         String phone = request.getParameter("phone");
         String deliveryOption = request.getParameter("order");
-        String storeLocationId = request.getParameter("storePickupLocation");
+        Long storeLocationId = Long.parseLong(request.getParameter("storePickupLocation"));
 
 
         String creditCardNo=request.getParameter("creditCardNo");
@@ -192,11 +186,12 @@ public class EditCustomerOrder extends HttpServlet {
         System.out.print("the user address is" + userAddress);
         System.out.print(creditCardNo);
 
-        validation(firstName, lastName, address1, city, state, zipCode,
-                phone, storeLocationId, deliveryOption, creditCardNo, utilities, pw);
+//        validation(firstName, lastName, address1, city, state, zipCode,
+//                phone, storeLocationId, deliveryOption, creditCardNo, utilities, pw);
 
         CustomerOrder customerOrder = utilities.getCustomerOrder(customerOrderId);
         Transaction transaction = MySqlDataStoreUtilities.getTransaction(customerOrder.getTransactionId());
+        transaction.setStoreLocationId(storeLocationId);
         transaction.setFirstName(firstName);
         transaction.setLastName(lastName);
         transaction.setAddress1(address1);
@@ -213,51 +208,51 @@ public class EditCustomerOrder extends HttpServlet {
 
     }
 
-    private void validation(String firstName, String lastName, String address1,
-                            String city, String state, String zipCode, String phone, String storePickupLocation,
-                            String order, String creditCardNo, Utilities utilities, PrintWriter pw) {
-        if(firstName.isEmpty()) {
-            sendError(utilities, pw, "first name");
-            return;
-        }
-        if(lastName.isEmpty()) {
-            sendError(utilities, pw, "last name");
-            return;
-        }
-        if(address1.isEmpty()) {
-            sendError(utilities, pw, "address1");
-            return;
-        }
-        if(city.isEmpty()) {
-            sendError(utilities, pw, "city");
-            return;
-        }
-
-        if(state.isEmpty()) {
-            sendError(utilities, pw, "state");
-            return;
-        }
-
-        if(zipCode.isEmpty()) {
-            sendError(utilities, pw, "zip code");
-            return;
-        }
-
-        if(phone.isEmpty()) {
-            sendError(utilities, pw, "phone");
-            return;
-        }
-
-        if(order.equalsIgnoreCase("storePickup") && storePickupLocation.equalsIgnoreCase("None")) {
-            sendError(utilities, pw, "store pick up location when store pick up is chosed");
-            return;
-        }
-
-        if(creditCardNo.isEmpty()) {
-            sendError(utilities, pw, "Credit Card Number");
-            return;
-        }
-    }
+//    private void validation(String firstName, String lastName, String address1,
+//                            String city, String state, String zipCode, String phone, String storePickupLocation,
+//                            String order, String creditCardNo, Utilities utilities, PrintWriter pw) {
+//        if(firstName.isEmpty()) {
+//            sendError(utilities, pw, "first name");
+//            return;
+//        }
+//        if(lastName.isEmpty()) {
+//            sendError(utilities, pw, "last name");
+//            return;
+//        }
+//        if(address1.isEmpty()) {
+//            sendError(utilities, pw, "address1");
+//            return;
+//        }
+//        if(city.isEmpty()) {
+//            sendError(utilities, pw, "city");
+//            return;
+//        }
+//
+//        if(state.isEmpty()) {
+//            sendError(utilities, pw, "state");
+//            return;
+//        }
+//
+//        if(zipCode.isEmpty()) {
+//            sendError(utilities, pw, "zip code");
+//            return;
+//        }
+//
+//        if(phone.isEmpty()) {
+//            sendError(utilities, pw, "phone");
+//            return;
+//        }
+//
+//        if(order.equalsIgnoreCase("storePickup") && storePickupLocation.equalsIgnoreCase("None")) {
+//            sendError(utilities, pw, "store pick up location when store pick up is chosed");
+//            return;
+//        }
+//
+//        if(creditCardNo.isEmpty()) {
+//            sendError(utilities, pw, "Credit Card Number");
+//            return;
+//        }
+//    }
 
     private void sendError(Utilities utilities, PrintWriter pw, String errorName) {
         utilities.printHtml("Header.html");

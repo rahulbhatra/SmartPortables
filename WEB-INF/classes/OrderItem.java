@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 */
 
 public class OrderItem extends HttpServlet {
+    private Long productId;
     private String name;
     private double price;
     private String image;
@@ -21,8 +22,9 @@ public class OrderItem extends HttpServlet {
     private double discount;
     private double rebate;
 
-    public OrderItem(String name, double price, String image, ProductManufacturers productManufacturers, boolean warrantyIncluded, double discount
+    public OrderItem(Long productId, String name, double price, String image, ProductManufacturers productManufacturers, boolean warrantyIncluded, double discount
             , double rebate) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.image = image;
@@ -86,5 +88,13 @@ public class OrderItem extends HttpServlet {
 
     public void setRebate(double rebate) {
         this.rebate = rebate;
+    }
+
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 }

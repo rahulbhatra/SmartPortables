@@ -13,36 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 
 public class NextAccessory extends HttpServlet {
 
-	/* Console Page Displays all the Consoles and their Information in Game Speed */
+    /* Console Page Displays all the Consoles and their Information in Game Speed */
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-	
-		PrintWriter pw = response.getWriter();
-		String name = null;
-		String productManufacturer = request.getParameter("maker");
-		String ProductName = request.getParameter("access");
-		int j = Integer.parseInt(request.getParameter("value"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+
+        PrintWriter pw = response.getWriter();
+        String name = null;
+        String productManufacturer = request.getParameter("maker");
+        String ProductName = request.getParameter("access");
+        int j = Integer.parseInt(request.getParameter("value"));
 
 
-		/* Checks the Tablets type whether it is microsft or sony or nintendo */
+        /* Checks the Tablets type whether it is microsft or sony or nintendo */
 
-		Map<Long, Product> hm = new HashMap<>();
-		if(productManufacturer==null){
-			hm.putAll(SaxParserDataStore.accessoriesHasMap);
-			name = "";
-		}
-		else
-		{
-			for(Map.Entry<Long,Product> entry : SaxParserDataStore.wearableTechnologyHashMap.entrySet())
-			{
-				if(ProductManufacturers.getEnum(productManufacturer).equals(entry.getValue().getManufacturer()))
-				{
-					hm.put(entry.getValue().getProductId(),entry.getValue());
-				}
-			}
-			name = productManufacturer;
-		}
+        Map<Long, Product> hm = new HashMap<>();
+        if (productManufacturer == null) {
+            hm.putAll(SaxParserDataStore.accessoriesHasMap);
+            name = "";
+        } else {
+            for (Map.Entry<Long, Product> entry : SaxParserDataStore.wearableTechnologyHashMap.entrySet()) {
+                if (ProductManufacturers.getEnum(productManufacturer).equals(entry.getValue().getManufacturer())) {
+                    hm.put(entry.getValue().getProductId(), entry.getValue());
+                }
+            }
+            name = productManufacturer;
+        }
 		
 		/* Header, Left Navigation Bar are Printed.
 
@@ -50,114 +46,109 @@ public class NextAccessory extends HttpServlet {
 
 		and then Footer is Printed*/
 
-		Utilities utility = new Utilities(request,pw);
-		utility.printHtml("Header.html");
-		utility.printHtml("LeftNavigationBar.html");
-		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>"+name+" Consoles</a>");
-		pw.print("</h2><div class='entry'><table id='bestseller'>");
-	//	int i = 1; int size= hm.size();
-		for(Map.Entry<Long, Product> entry : hm.entrySet())
-		{
-			Product console = entry.getValue();
-			if (console.getName().equals(ProductName))
-			{
-			pw.print("<tr>");
-			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+console.getName()+"</h3>");
-			pw.print("<strong>$"+console.getPrice()+"</strong><ul>");
-			pw.print("<li id='item'><img src='images/consoles/"+console.getImage()+"' alt='' /></li>");
-			pw.print("<li><form method='post' action='Cart'>" +
-					"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value=''>"+
-					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+entry.getKey()+"'>"+
-					"<input type='hidden' name='type' value='consoles'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value=''>"+
-				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-			pw.print("</ul></div></td>");
-			pw.print("</tr>");
-			
-			}
-		}		
-		pw.print("</table></div></div></div>");	
-		
-		pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
-		pw.print("<a style='font-size: 24px;'>"+ProductName+" Accessories</a>");
-		pw.print("</h2><div class='entry'><table id='bestseller'>");
-		Product console1 = hm.get(ProductName);
-		
-		int i = 1; int size= hm.size();
-		pw.print("<tr>");
-		ArrayList<Integer> arr = new ArrayList<> ();
-		for(Map.Entry<Integer, Integer> acc:console1.getAccessories().entrySet())
-		{
-			
-			arr.add(acc.getValue());
-		}	
-		
-		
-		pw.print("<td><li><form method='post' action='PrevAccessory'>" +
-					"<input type='hidden' name='name' value='"+arr+"'>"+
-					"<input type='hidden' name='value' value='"+j+"'>"+
-					"<input type='hidden' name='type' value='accessories'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value='"+ProductName+"'>"+
-					"<input type='submit' class='btnbuy' value='Prev'></form></li></td>");
-		for (int k =1;j < arr.size()&& k <= 2;j++,k++){
-	    Product accessory= SaxParserDataStore.accessoriesHasMap.get(arr.get(j));
-		    
-			
-			pw.print("<td><div id='shop_item'>");
-			pw.print("<h3>"+accessory.getName()+"</h3>");
-			pw.print("<strong>"+accessory.getPrice()+"$</strong><ul>");
-			pw.print("<li id='item'><img src='images/accessories/"+accessory.getImage()+"' alt='' /></li>");
-			pw.print("<li><form method='post' action='Cart'>" +
-					"<input type='hidden' name='name' value='"+arr.get(j)+"'>"+
-					"<input type='hidden' name='type' value='accessories'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value='"+ProductName+"'>"+
-					"<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
-			pw.print("<li><form method='post' action='WriteReview'>"+"<input type='hidden' name='name' value='"+arr+"'>"+
-					"<input type='hidden' name='type' value='accessories'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value='"+ProductName+"'>"+
-				    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
-			pw.print("<li><form method='post' action='ViewReview'>"+"<input type='hidden' name='name' value='"+arr+"'>"+
-					"<input type='hidden' name='type' value='accessories'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value='"+ProductName+"'>"+
-				    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
-		
-			pw.print("</ul></div></td>");
-			
-			
-			
-			
-		}
-		if (j != arr.size())
-		{
-		pw.print("<td><li><form method='post' action='NextAccessory'>" +
-					"<input type='hidden' name='name' value='"+arr+"'>"+
-					"<input type='hidden' name='value' value='"+j+"'>"+
-					"<input type='hidden' name='type' value='accessories'>"+
-					"<input type='hidden' name='maker' value='"+productManufacturer+"'>"+
-					"<input type='hidden' name='access' value='"+ProductName+"'>"+
-					"<input type='submit' class='btnbuy' value='Next'></form></li></td>");
-		}
-		pw.print("</tr>");		
-		pw.print("</table><a class='prev' onclick='plusSlides(-1)'>&#10094</a>"+
-       "<a class='next' onclick='plusSlides(1)'>&#10095</a></div></div></div>");
-     		
-		utility.printHtml("Footer.html");
-		
-	}
+        Utilities utility = new Utilities(request, pw);
+        utility.printHtml("Header.html");
+        utility.printHtml("LeftNavigationBar.html");
+        pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
+        pw.print("<a style='font-size: 24px;'>" + name + " Consoles</a>");
+        pw.print("</h2><div class='entry'><table id='bestseller'>");
+        //	int i = 1; int size= hm.size();
+        for (Map.Entry<Long, Product> entry : hm.entrySet()) {
+            Product console = entry.getValue();
+            if (console.getProductName().equals(ProductName)) {
+                pw.print("<tr>");
+                pw.print("<td><div id='shop_item'>");
+                pw.print("<h3>" + console.getProductName() + "</h3>");
+                pw.print("<strong>$" + console.getPrice() + "</strong><ul>");
+                pw.print("<li id='item'><img src='images/consoles/" + console.getImage() + "' alt='' /></li>");
+                pw.print("<li><form method='post' action='Cart'>" +
+                        "<input type='hidden' name='name' value='" + entry.getKey() + "'>" +
+                        "<input type='hidden' name='type' value='consoles'>" +
+                        "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                        "<input type='hidden' name='access' value=''>" +
+                        "<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+                pw.print("<li><form method='post' action='WriteReview'>" + "<input type='hidden' name='name' value='" + entry.getKey() + "'>" +
+                        "<input type='hidden' name='type' value='consoles'>" +
+                        "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                        "<input type='hidden' name='access' value=''>" +
+                        "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+                pw.print("<li><form method='post' action='ViewReview'>" + "<input type='hidden' name='name' value='" + entry.getKey() + "'>" +
+                        "<input type='hidden' name='type' value='consoles'>" +
+                        "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                        "<input type='hidden' name='access' value=''>" +
+                        "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
+                pw.print("</ul></div></td>");
+                pw.print("</tr>");
+
+            }
+        }
+        pw.print("</table></div></div></div>");
+
+        pw.print("<div id='content'><div class='post'><h2 class='title meta'>");
+        pw.print("<a style='font-size: 24px;'>" + ProductName + " Accessories</a>");
+        pw.print("</h2><div class='entry'><table id='bestseller'>");
+        Product console1 = hm.get(ProductName);
+
+        int i = 1;
+        int size = hm.size();
+        pw.print("<tr>");
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> acc : console1.getAccessories().entrySet()) {
+
+            arr.add(acc.getValue());
+        }
+
+
+        pw.print("<td><li><form method='post' action='PrevAccessory'>" +
+                "<input type='hidden' name='name' value='" + arr + "'>" +
+                "<input type='hidden' name='value' value='" + j + "'>" +
+                "<input type='hidden' name='type' value='accessories'>" +
+                "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                "<input type='hidden' name='access' value='" + ProductName + "'>" +
+                "<input type='submit' class='btnbuy' value='Prev'></form></li></td>");
+        for (int k = 1; j < arr.size() && k <= 2; j++, k++) {
+            Product accessory = SaxParserDataStore.accessoriesHasMap.get(arr.get(j));
+
+
+            pw.print("<td><div id='shop_item'>");
+            pw.print("<h3>" + accessory.getProductName() + "</h3>");
+            pw.print("<strong>" + accessory.getPrice() + "$</strong><ul>");
+            pw.print("<li id='item'><img src='images/accessories/" + accessory.getImage() + "' alt='' /></li>");
+            pw.print("<li><form method='post' action='Cart'>" +
+                    "<input type='hidden' name='name' value='" + arr.get(j) + "'>" +
+                    "<input type='hidden' name='type' value='accessories'>" +
+                    "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                    "<input type='hidden' name='access' value='" + ProductName + "'>" +
+                    "<input type='submit' class='btnbuy' value='Buy Now'></form></li>");
+            pw.print("<li><form method='post' action='WriteReview'>" + "<input type='hidden' name='name' value='" + arr + "'>" +
+                    "<input type='hidden' name='type' value='accessories'>" +
+                    "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                    "<input type='hidden' name='access' value='" + ProductName + "'>" +
+                    "<input type='submit' value='WriteReview' class='btnreview'></form></li>");
+            pw.print("<li><form method='post' action='ViewReview'>" + "<input type='hidden' name='name' value='" + arr + "'>" +
+                    "<input type='hidden' name='type' value='accessories'>" +
+                    "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                    "<input type='hidden' name='access' value='" + ProductName + "'>" +
+                    "<input type='submit' value='ViewReview' class='btnreview'></form></li>");
+
+            pw.print("</ul></div></td>");
+
+
+        }
+        if (j != arr.size()) {
+            pw.print("<td><li><form method='post' action='NextAccessory'>" +
+                    "<input type='hidden' name='name' value='" + arr + "'>" +
+                    "<input type='hidden' name='value' value='" + j + "'>" +
+                    "<input type='hidden' name='type' value='accessories'>" +
+                    "<input type='hidden' name='maker' value='" + productManufacturer + "'>" +
+                    "<input type='hidden' name='access' value='" + ProductName + "'>" +
+                    "<input type='submit' class='btnbuy' value='Next'></form></li></td>");
+        }
+        pw.print("</tr>");
+        pw.print("</table><a class='prev' onclick='plusSlides(-1)'>&#10094</a>" +
+                "<a class='next' onclick='plusSlides(1)'>&#10095</a></div></div></div>");
+
+        utility.printHtml("Footer.html");
+
+    }
 }

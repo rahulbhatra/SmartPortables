@@ -45,14 +45,11 @@ public class SaxParserDataStore extends DefaultHandler {
     static Map<Long, Product> laptopHashMap;
     static Map<Long, Product> voiceAssistantHashMap;
     static Map<Long, Product> accessoriesHasMap;
-//    HashMap<Integer, Integer> accessoryHashMap;
+
     String consoleXmlFileName;
     String elementValueRead;
     String currentElement = "";
     Long count = 0l;
-
-    public SaxParserDataStore() {
-    }
 
     public SaxParserDataStore(String consoleXmlFileName) {
         this.consoleXmlFileName = consoleXmlFileName;
@@ -61,7 +58,6 @@ public class SaxParserDataStore extends DefaultHandler {
         laptopHashMap = new HashMap<>();
         voiceAssistantHashMap = new HashMap<>();
         accessoriesHasMap = new HashMap<>();
-//        accessoryHashMap = new HashMap<>();
         parseDocument();
     }
 
@@ -110,35 +106,36 @@ public class SaxParserDataStore extends DefaultHandler {
             currentElement = "wearableTechnology";
             product = new Product();
             product.setCategory(ProductCategory.WearableTechnology);
-//            product.setProductId(Long.parseLong(attributes.getValue("id")));
             product.setProductId(count++);
         }
         if (elementName.equalsIgnoreCase(ProductCategory.Laptop.toString())) {
             currentElement = "laptop";
             laptop = new Product();
             laptop.setCategory(ProductCategory.Phone);
-//            laptop.setProductId(Long.parseLong(attributes.getValue("id")));
             laptop.setProductId(count++);
         }
         if (elementName.equalsIgnoreCase(ProductCategory.Phone.toString())) {
             currentElement = "phone";
             phone = new Product();
             phone.setCategory(ProductCategory.Laptop);
-//            phone.setProductId(Long.parseLong(attributes.getValue("id")));
             phone.setProductId(count++);
         }
-        if (elementName.equalsIgnoreCase("voiceAssistant")) {
+        if (elementName.equalsIgnoreCase(ProductCategory.VoiceAssistant.toString())) {
             currentElement = "voiceAssistant";
             voiceAssistant = new Product();
             voiceAssistant.setCategory(ProductCategory.VoiceAssistant);
-//            voiceAssistant.setProductId(Long.parseLong(attributes.getValue("id")));
             voiceAssistant.setProductId(count++);
         }
-        if (elementName.equals("accessory") && !currentElement.equals("wearableTechnology")) {
+//        if (elementName.equalsIgnoreCase("accessory") && !currentElement.equals("wearableTechnology")) {
+//            currentElement = "accessory";
+//            accessory = new Product();
+//            accessory.setCategory(ProductCategory.Accessories);
+//            accessory.setProductId(count++);
+//        }
+        if (elementName.equalsIgnoreCase(ProductCategory.Accessory.toString())) {
             currentElement = "accessory";
             accessory = new Product();
-            accessory.setCategory(ProductCategory.Accessories);
-//            accessory.setProductId(Long.parseLong(attributes.getValue("id")));
+            accessory.setCategory(ProductCategory.Accessory);
             accessory.setProductId(count++);
         }
 
@@ -168,10 +165,18 @@ public class SaxParserDataStore extends DefaultHandler {
             return;
         }
 
-        if (element.equals("accessory") && currentElement.equals("accessory")) {
-            accessoriesHasMap.put(accessory.getProductId(), accessory);
+        if (element.equals("accessory")) {
+            if(accessory.getProductName() != null) {
+                accessoriesHasMap.put(accessory.getProductId(), accessory);
+                System.out.println("---------- Accessory ---------" + accessory.toString());
+            }
             return;
         }
+
+//        if (element.equals("accessory") && currentElement.equals("accessory")) {
+//            accessoriesHasMap.put(accessory.getProductId(), accessory);
+//            return;
+//        }
 //        if (element.equals("accessory") && currentElement.equals("wearableTechnology")) {
 //            accessoryHashMap.put(Integer.parseInt(elementValueRead), Integer.parseInt(elementValueRead));
 //        }
@@ -217,7 +222,6 @@ public class SaxParserDataStore extends DefaultHandler {
                 phone.setCondition(elementValueRead);
             if (currentElement.equals("laptop"))
                 laptop.setCondition(elementValueRead);
-
             if (currentElement.equals("voiceAssistant"))
                 voiceAssistant.setCondition(elementValueRead);
             if (currentElement.equals("accessory"))
@@ -241,16 +245,16 @@ public class SaxParserDataStore extends DefaultHandler {
 
         if (element.equalsIgnoreCase("name")) {
             if (currentElement.equals("wearableTechnology"))
-                product.setName(elementValueRead);
+                product.setProductName(elementValueRead);
             if (currentElement.equals("phone"))
-                phone.setName(elementValueRead);
+                phone.setProductName(elementValueRead);
             if (currentElement.equals("laptop"))
-                laptop.setName(elementValueRead);
+                laptop.setProductName(elementValueRead);
 
             if (currentElement.equals("voiceAssistant"))
-                voiceAssistant.setName(elementValueRead);
+                voiceAssistant.setProductName(elementValueRead);
             if (currentElement.equals("accessory"))
-                accessory.setName(elementValueRead);
+                accessory.setProductName(elementValueRead);
             return;
         }
 
@@ -312,6 +316,6 @@ public class SaxParserDataStore extends DefaultHandler {
     //call the constructor to parse the xml and get product details
     public static void addHashmap() {
         String TOMCAT_HOME = System.getProperty("catalina.home");
-        new SaxParserDataStore(TOMCAT_HOME + "/webapps/Tutorial_1/ProductCatalog.xml");
+        new SaxParserDataStore(TOMCAT_HOME + "/webapps/Tutorial_3/ProductCatalog.xml");
     }
 }

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.*;
 import java.util.Map;
 
 @WebServlet("/Registration")
@@ -32,14 +31,15 @@ public class Registration extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String repassword = request.getParameter("repassword");
+        Integer userAge = Integer.parseInt(request.getParameter("userAge"));
+        String userGender = request.getParameter("userGender");
+        String userOccupation = request.getParameter("userOccupation");
         UserType userType = UserType.Customer;
 
         if (!utility.isLoggedin()) {
             userType = UserType.getEnum(request.getParameter("usertype"));
         }
 
-
-        //if password and repassword does not match show error message
 
         if (!password.equals(repassword)) {
             error_msg = "Passwords doesn't match!";
@@ -61,9 +61,11 @@ public class Registration extends HttpServlet {
 				/*create a user object and store details into hashmap
 				store the user hashmap into file  */
 
-                    User user = new User(null, username, password, password,  userType.toString());
+                    User user = new User(null, username, password, password, userType.toString(), userAge,
+                            userGender, userOccupation);
                     hm.put(username, user);
-                    MySqlDataStoreUtilities.insertUser(username, password, repassword, userType.toString());
+                    MySqlDataStoreUtilities.insertUser(username, password, repassword, userType.toString(),
+                            userAge, userGender, userOccupation);
                     HttpSession session = request.getSession(true);
 
                     if (!utility.isLoggedin()) {
@@ -94,17 +96,54 @@ public class Registration extends HttpServlet {
         pw.print("<div class='post' style='float: none; width: 100%'>");
         pw.print("<h2 class='title meta'><a style='font-size: 24px;'>Login</a></h2>"
                 + "<div class='entry'>"
-                + "<div style='width:400px; margin:25px; margin-left: auto;margin-right: auto;'>");
-        if (error)
+                + "<div style='width:100%; margin:25px; margin-left: auto;margin-right: auto;'>");
+
+        if (error) {
             pw.print("<h4 style='color:red'>" + error_msg + "</h4>");
-        pw.print("<form method='post' action='Registration'>"
-                + "<table style='width:100%'><tr><td>"
-                + "<h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input>"
-                + "</td></tr><tr><td>"
+        }
+
+        pw.print("<form method='post' action='Registration'>" +
+                "<table style='width:100%'>" +
+
+                "<tr><td>" +
+                "<h3>Username</h3></td><td><input type='text' name='username' value='' class='input' required></input>" +
+                "</td></tr>");
+
+        pw.print("<tr>");
+        pw.print("<td>");
+        pw.print("<h3>User Age</h3>");
+        pw.print("</td>");
+        pw.print("<td class='rightDataTable'>");
+        pw.print("<input style='radius: 20px; width: 100%;' type='number' placeholder='Enter User Age' name='userAge' required");
+        pw.print("</td>");
+        pw.print("</tr>");
+
+        pw.print("<tr>");
+        pw.print("<td>");
+        pw.print("<h3>User Gender</h3>");
+        pw.print("</td>");
+        pw.print("<td>");
+        pw.print("<input type='radio' id='male' name='userGender' value='male' checked><label for='male'>Male</label><br>" +
+                "<input type='radio' id='female' name='userGender' value='female'><label for='female'>Female</label>");
+        pw.print("</td>");
+        pw.print("</tr>");
+
+        pw.print("<tr>");
+        pw.print("<td>");
+        pw.print("<h3>User Occupation</h3>");
+        pw.print("</td>");
+        pw.print("<td>");
+        pw.print("<input style='radius: 20px; width: 100%;' type='text' placeholder='Enter User Occupation' name='userOccupation' required");
+        pw.print("</td>");
+        pw.print("</tr>");
+
+        pw.print("<tr><td>"
                 + "<h3>Password</h3></td><td><input type='password' name='password' value='' class='input' required></input>"
-                + "</td></tr><tr><td>"
+                + "</td></tr>" +
+                "<tr><td>"
                 + "<h3>Re-Password</h3></td><td><input type='password' name='repassword' value='' class='input' required></input>"
-                + "</td></tr><tr><td>"
+                + "</td></tr>" +
+                "<tr><td>"
                 + "<h3>User Type</h3></td><td><select name='usertype' class='input'><option value='" + UserType.Customer.toString() + "' selected>Customer</option><option value='" + UserType.StoreManager.toString() + "'>Store Manager</option><option value='" + UserType.SalesMan.toString() + "'>Salesman</option></select>"
                 + "</td></tr></table>"
                 + "<input type='submit' class='btnbuy' name='ByUser' value='Create User' style='float: right;height: 20px margin: 20px; margin-right: 10px;'></input>"

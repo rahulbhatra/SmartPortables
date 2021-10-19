@@ -1,28 +1,16 @@
-import java.io.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import javax.servlet.http.*;
 import javax.servlet.RequestDispatcher;
 import java.util.*;
-import java.text.*;
 
 
 import java.io.IOException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.*;
-import javax.servlet.RequestDispatcher;
-
-import java.util.*;
-import java.io.*;
 
 
 @WebServlet("/autocomplete")
@@ -69,7 +57,7 @@ public class AutoCompleteServlet extends HttpServlet {
 				if (!searchId.equals("")) 
 				{
 					AjaxUtility a=new AjaxUtility();
-					sb=a.readdata(searchId);
+					sb=a.readData(searchId);
 					if(sb!=null || !sb.equals(""))
 					{
 						namesAdded=true;
@@ -89,10 +77,10 @@ public class AutoCompleteServlet extends HttpServlet {
 			if (action.equals("lookup"))
 			{
 				
-				HashMap<String,Product> data=AjaxUtility.getData();     	
-				if ((searchId != null) && data.containsKey(searchId.trim())) 
+				Map<String, Product> productMap = Utilities.getProductNameValueMap();
+				if ((searchId != null) && productMap.containsKey(searchId.trim()))
 				{
-					request.setAttribute("data",data.get(searchId.trim()));	
+					request.setAttribute("data", productMap.get(searchId.trim()));
 					RequestDispatcher rd=context.getRequestDispatcher("/ProductData");
 					rd.forward(request,response);
 				}
@@ -100,6 +88,7 @@ public class AutoCompleteServlet extends HttpServlet {
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 		}
     }
 }

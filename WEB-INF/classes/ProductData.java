@@ -27,7 +27,7 @@ response.setContentType("text/html");
 		pw.print("<tr>");
 		pw.print("<td><div id='shop_item'>");
 			Product data= (Product)request.getAttribute("data");
-			pw.print("<h3>"+data.getName()+"</h3>");
+			pw.print("<h3>"+data.getProductName()+"</h3>");
 			pw.print("<strong>$"+data.getPrice()+"</strong><ul>");
 			pw.print("<li id='item'><img src='images/"+ data.getImage()+"' alt='' /></li>");
 			pw.print("<li><form method='post' action='Cart'>" +

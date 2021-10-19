@@ -30,7 +30,7 @@ function createDataTable(jsonData) {
     //Create an array of product name and an array of zipcodes
     for(var i=0; i<parsedData.length; i++) {
         var productName = parsedData[i]["productName"];
-        var zipCode = parsedData[i]["retailerpin"];
+        var zipCode = parsedData[i]["retailerZipCode"];
         if(!productNameArr.includes(productName)) {
             productNameArr.push(productName);
         }
@@ -58,7 +58,7 @@ function createDataTable(jsonData) {
         dataArr[0] = zipCodeArr[i];
         for(var j=0; j<productNameArr.length; j++) {
             for(k=0; k<parsedData.length; k++) {
-                if(parsedData[k]["retailerpin"] === zipCodeArr[i] && parsedData[k]["productName"] === productNameArr[j]) {                    
+                if(parsedData[k]["retailerZipCode"] === zipCodeArr[i] && parsedData[k]["productName"] === productNameArr[j]) {
                     dataArr[j+1] = parseInt(parsedData[k]["reviewRating"]);                   
                 }                 
             }
@@ -90,8 +90,8 @@ function drawChart(data, productNameArr) {
      var chartData = google.visualization.arrayToDataTable(data);
 
      var options = {
-        'width':600,
-        'height':650,
+        'width':1000,
+        'height':1000,
           chart: {
             title: 'Trending Products Chart',
             subtitle: productNames,

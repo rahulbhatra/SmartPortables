@@ -37,7 +37,6 @@ public class Cart extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter pw = response.getWriter();
 		Utilities utility = new Utilities(request, pw);
-		Carousel carousel = new Carousel();
 		if (!utility.isLoggedin()) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("login_msg", "Please Login to add items to cart");
@@ -94,12 +93,17 @@ public class Cart extends HttpServlet {
 			pw.print("<input type='hidden' name='orderTotalRebate' value='" + totalRebate + "'>");
 			pw.print("<input type='submit' name='CheckOut' value='CheckOut' class='btnbuy' />");
 			pw.print("</form>");
+
 			/* This code is calling Carousel.java code to implement carousel feature*/
-			pw.print(carousel.carouselfeature(utility));
+
 		} else {
 			pw.print("<h4 style='color:red'>Your Cart is empty</h4>");
 		}
 		pw.print("</div></div></div>");
+		for (OrderItem orderItem : utility.getCustomerOrders()) {
+			Product product = MySqlDataStoreUtilities.getProduct(orderItem.getProductId());
+			pw.print(Carousel.carouselFeature(utility, product));
+		}
 		utility.printHtml("Footer.html");
 	}
 

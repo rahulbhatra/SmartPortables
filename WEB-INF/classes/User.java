@@ -17,13 +17,44 @@ public class User implements Serializable{
 	private String password;
 	private String rePassword;
 	private String userType;
+	private Integer userAge;
+	private String userGender;
+	private String userOccupation;
 
-	public User(Long userId, String userName, String password, String rePassword, String userType) {
+	public User(Long userId, String userName, String password, String rePassword, String userType, Integer userAge,
+				String userGender, String userOccupation) {
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
 		this.rePassword = rePassword;
 		this.userType = userType;
+		this.userAge = userAge;
+		this.userGender = userGender;
+		this.userOccupation = userOccupation;
+	}
+
+	public Integer getUserAge() {
+		return userAge;
+	}
+
+	public void setUserAge(Integer userAge) {
+		this.userAge = userAge;
+	}
+
+	public String getUserGender() {
+		return userGender;
+	}
+
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+
+	public String getUserOccupation() {
+		return userOccupation;
+	}
+
+	public void setUserOccupation(String userOccupation) {
+		this.userOccupation = userOccupation;
 	}
 
 	public Long getUserId() {

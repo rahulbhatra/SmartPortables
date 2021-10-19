@@ -57,15 +57,13 @@ hr {
 /* Header Content of the Website*/
 
 #header {
-	width: 1000px;
-	height: 60px;
-	margin: 0 auto;
-	padding: 0px;
+    height: 40px;
+    margin: 0 auto;
+    padding: 0px 20px;
 }
 
 /* Game Speed LOGO Decoration */
 #logo {
-	width: 1000px;
 	height: 110px;
 	margin: 0 auto;
 	padding: 30px 20px 0px 20px;
@@ -139,30 +137,31 @@ hr {
 
 #menu a {
 	display: block;
-	float: left;
-	height: 31px;
-	padding: 12px 20px 0px 20px;
-	letter-spacing: -1px;
-	text-decoration: none;
-	text-align: center;
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 17px;
-	font-weight: normal;
-	color: white;
-	background: url(images/TopBar/top_button.jpg);
+    float: left;
+    height: 31px;
+    border-radius: 5px;
+    padding: 12px 12px 0px 20px;
+    letter-spacing: 0px;
+    text-decoration: none;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    color: var(--background-color);
+    background: var(--primary-white);
 }
 
 /* Decoration of Top/Main Navigation Bar with :hover Tags (Menu Content)*/
 
 #menu a:hover {
 	text-decoration: none;
-	background: url(images/TopBar/top_button_hover.jpg);
+	color: var(--pink);
 }
 
 /* Page Display Decoration*/
 
 #page {
-	width: 1000px;
+	/* width: 1000px; */
 	margin: 0 auto;
 	padding: 20px 20px 0px 20px;
 }
@@ -171,12 +170,13 @@ hr {
 
 #content {
 	float: right;
-	width: 750px;
+	/* width: 750px; */
+	width: 79%;
 }
 
 /* Products Display on the Main Content Screen */
 .post {
-	width: 750px;
+	/* width: 750px; */
 	margin-bottom: 20px;
 	padding: 20px 0px;
 	background: #FFFFFF;
@@ -269,8 +269,8 @@ hr {
 /* Left Navigation Bar - Sidebar */
 #sidebar {
 	float: left;
-	width: 225px;
-	font-size: 12px;
+    width: 20%;
+    font-size: 15px;
 }
 
 /* Left Navigation Bar - Decoration for Unordered List */
@@ -286,9 +286,10 @@ hr {
 /* Left Navigation Bar - Decoration for List Items*/
 
 #sidebar li {
-	margin-bottom: 20px;
-	padding: 10px 0px 10px 0px;
-	border-radius: 5px;
+	margin-bottom: 0px;
+    padding: 0px;
+    border-radius: 5px;
+	margin-bottom: 10px;
 }
 
 /* Left Navigation Bar - Decoration for Consoles , Games , Tablets */
@@ -304,7 +305,8 @@ hr {
 	margin: 0;
 	padding: 10px 0px;
 	border: none;
-	background: url(images/LeftNav/left_button.jpg) repeat-x left top;
+	text-align: left;
+	background: var(--primary-white);
 	
 }
 
@@ -314,8 +316,9 @@ hr {
 	padding: 0px 0px 0px 30px;
 	font-weight: normal;
 	border: none;
-	background: url(images/site/2.png) no-repeat 15px 4px;
-	color: white;
+	display: block;
+	background: var(--primary-white);
+	color: var(--background-color);
 }
 
 #sidebar li li a.viewmore {
@@ -327,12 +330,12 @@ hr {
 /* Left Navigation Bar - Decoration for Hyperlink hover Tags ( Colour Changes) */ 
 
 #sidebar li li a:hover {
-	color: #666666;
+	color: var(--pink);
 }
 
-#sidebar li li:hover {
-	background: url(images/LeftNav/left_button_hover.jpg);
-}
+/* #sidebar li li:hover {
+	background: var(--background-color);
+} */
 
 /* Left Navigation Bar - Decoration for Paragraph Tags */
 
@@ -346,11 +349,13 @@ hr {
 
 #sidebar h2 {
 	margin: 0 0 10px 0px;
-	padding: 8px 0 10px 20px;
-	background: url(images/LeftNav/left_button.jpg) repeat-x left bottom;
+	padding: 10px 30px;
+	border-radius: 5px;
+	text-align: left;
+	background: var(--primary-white);
 	font-size: 24px;
 	font-weight: normal;
-	color: white !important;
+	color: var(--background-color) !important;
 	font-size: 24px;
 }
 
@@ -544,6 +549,7 @@ table.gridtable {
 	border-width: 1px;
 	border-color: #666666;
 	border-collapse: collapse;
+	width: 100%;
 }
 
 /* Decoration for Cart Details with Table Head Tags */
@@ -601,26 +607,25 @@ table.gridtable td {
 	height: 400px;
 }
 
-.createContentLabel {
+.leftDataTable {
 	width: 20%;
 	text-align: right;
 	color: white;
 }
 
-.createContentInput {
+.rightDataTable {
 	text-align: left;
 	width: 75%;
 }
 
-.createContentLabel:hover {
+.leftDataTable:hover {
 	color: var(--pink);
 }
 
-.createContentRow {
-	width: 100px;
-	height: 28px;
-	padding: 2px;
-	font-size: 14px;
+.rowTable {
+	width: 100%;
+    height: 30px;
+    font-size: 15px;
 }
 
 .createContentButton {
@@ -656,7 +661,7 @@ table.gridtable td {
 	color: var(--pink);
 }
 
-.loginAsCustomerLabel {
+.leftDataTable {
 	width: 40%;
 	text-align: right;
 	color: var(--pink);
@@ -664,16 +669,17 @@ table.gridtable td {
 
 /* All ways use properties Start */
 
-.mainButton {
-	border-radius: 2px;
+.classicButton {
+	border-radius: 5px;
 	border-color: var(--background-color);
 	color: white;
 	background-color: var(--background-color);
 	height: 25px;
-	margin: auto;
+	margin: 2px auto;
+    padding: 10px 10px;
 }
 
-.mainButton:hover {
+.classicButton:hover {
 	color: var(--pink);
 }
 
@@ -690,3 +696,40 @@ table.gridtable td {
 }
 
 /* Shop Item Description Properties End */
+
+/* Table UI */
+.tableUI {
+	width: 100%;
+}
+
+/* menu */
+.menu {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.menu-item {
+	font-size: var(--fontBig);
+	margin: auto;
+	display: block;
+}
+
+.menu-item > a {
+	background: var(--background-color);
+	text-decoration: none;
+	color: var(--pink);
+	border-radius: 5px;
+	padding: 15px 50px;
+}
+
+.menu-item > a:hover {
+	background: var(--pink);
+	color: var(--primary-white);
+	text-decoration: none;
+}
+
+.barchart {
+	height: 300px;
+	width: 900px;
+}

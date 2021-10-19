@@ -9,16 +9,22 @@ import java.util.Map;
 
 @WebServlet("/RegistrationSQL")
 public class RegistrationSQL extends HttpServlet {
-    public static void insertUser(Connection conn, String username, String password, String repassword, String usertype) {
+    public static void insertUser(Connection conn, String username, String password, String repassword, String usertype, Integer userAge,
+                                  String userGender, String userOccupation) {
         try {
-            String insertIntoCustomerRegisterQuery = "INSERT INTO Registration(userName,password,rePassword,userType) "
-                    + "VALUES (?,?,?,?);";
+            String insertIntoCustomerRegisterQuery = "INSERT INTO Registration(userName,password,rePassword,userType," +
+                    "userAge, userGender, userOccupation) "
+                    + "VALUES (?,?,?,?,?,?,?);";
 
             PreparedStatement pst = conn.prepareStatement(insertIntoCustomerRegisterQuery);
             pst.setString(1, username);
             pst.setString(2, password);
             pst.setString(3, repassword);
             pst.setString(4, usertype);
+            pst.setInt(5, userAge);
+            pst.setString(6, userGender);
+            pst.setString(7, userOccupation);
+            System.out.println("--------------- Inser User" + pst.toString());
             pst.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,7 +38,10 @@ public class RegistrationSQL extends HttpServlet {
             String selectCustomerQuery = "select * from  Registration";
             ResultSet rs = stmt.executeQuery(selectCustomerQuery);
             while (rs.next()) {
-                User user = new User(rs.getLong("userId"), rs.getString("username"), rs.getString("password"), rs.getString("repassword"), rs.getString("usertype"));
+                User user = new User(rs.getLong("userId"), rs.getString("username"),
+                        rs.getString("password"), rs.getString("repassword"),
+                        rs.getString("usertype"), rs.getInt("userAge"),
+                        rs.getString("userGender"), rs.getString("userOccupation"));
                 userHashMap.put(rs.getString("username"), user);
             }
         } catch (Exception e) {
@@ -51,7 +60,10 @@ public class RegistrationSQL extends HttpServlet {
             ResultSet rs = pst.executeQuery();
 
             while (rs.next()) {
-                User user = new User(rs.getLong("userId"), rs.getString("username"), rs.getString("password"), rs.getString("repassword"), rs.getString("usertype"));
+                User user = new User(rs.getLong("userId"), rs.getString("username"),
+                        rs.getString("password"), rs.getString("repassword"),
+                        rs.getString("usertype"), rs.getInt("userAge"),
+                        rs.getString("userGender"), rs.getString("userOccupation"));
                 return user;
             }
         } catch (Exception e) {

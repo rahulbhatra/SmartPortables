@@ -63,7 +63,7 @@ function appendProduct(productName,productId) {
 
     linkElement = document.createElement("a");
     linkElement.className = "popupItem";
-    linkElement.setAttribute("href", "autocomplete?action=lookup&searchId=" + productId);
+    linkElement.setAttribute("href", "ViewProduct?productId=" + productId);
     linkElement.appendChild(document.createTextNode(productName));
     cell.appendChild(linkElement);
 }

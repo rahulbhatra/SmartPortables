@@ -12,12 +12,12 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-                <accessory>ps4_wc</accessory>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--                <accessory>ps4_wc</accessory>-->
 
-            </accessories>
+<!--            </accessories>-->
             <description>Fitbit Sense is very good product and it lets you enjoy your fitness</description>
         </wearableTechnology>
 
@@ -29,12 +29,12 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>ps3_wc</accessory>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
+<!--            <accessories>-->
+<!--                <accessory>ps3_wc</accessory>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
 
-            </accessories>
+<!--            </accessories>-->
             <description>Be fit have fun.</description>
         </wearableTechnology>
 
@@ -46,17 +46,17 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>xboxone_wc</accessory>
-                <accessory>xboxone_sh</accessory>
-                <accessory>xboxone_kg</accessory>
-                <accessory>xboxone_vb</accessory>
-                <accessory>xboxone_rs</accessory>
-                <accessory>xboxone_mp</accessory>
-                <accessory>xboxone_mc</accessory>
+<!--            <accessories>-->
+<!--                <accessory>xboxone_wc</accessory>-->
+<!--                <accessory>xboxone_sh</accessory>-->
+<!--                <accessory>xboxone_kg</accessory>-->
+<!--                <accessory>xboxone_vb</accessory>-->
+<!--                <accessory>xboxone_rs</accessory>-->
+<!--                <accessory>xboxone_mp</accessory>-->
+<!--                <accessory>xboxone_mc</accessory>-->
 
 
-            </accessories>
+<!--            </accessories>-->
             <description>An apple a day keeps the doctor away.</description>
         </wearableTechnology>
 
@@ -68,14 +68,14 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>xbox360_wc</accessory>
-                <accessory>xbox360_sh</accessory>
-                <accessory>xbox360_vb</accessory>
-                <accessory>xbox360_rs</accessory>
-                <accessory>xbox360_mp</accessory>
-                <accessory>xbox360_kg</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>xbox360_wc</accessory>-->
+<!--                <accessory>xbox360_sh</accessory>-->
+<!--                <accessory>xbox360_vb</accessory>-->
+<!--                <accessory>xbox360_rs</accessory>-->
+<!--                <accessory>xbox360_mp</accessory>-->
+<!--                <accessory>xbox360_kg</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
 
@@ -87,10 +87,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
 
@@ -102,10 +102,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Under Armour</description>
         </wearableTechnology>
 
@@ -117,10 +117,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
 
@@ -132,10 +132,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
 
@@ -147,10 +147,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
 
@@ -162,10 +162,10 @@
             <condition>New</condition>
             <discount>10.0</discount>
             <rebate>2.0</rebate>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
             <description>This is Wearable Tech</description>
         </wearableTechnology>
     </WearableTechnologyCatalog>
@@ -180,10 +180,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="13">
@@ -195,10 +195,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="14">
@@ -210,10 +210,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="15">
@@ -225,10 +225,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="16">
@@ -240,10 +240,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="17">
@@ -255,10 +255,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="18">
@@ -270,10 +270,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="19">
@@ -285,10 +285,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="20">
@@ -300,10 +300,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
         <phone id="21">
@@ -315,10 +315,10 @@
             <discount>10.0</discount>
             <rebate>2.0</rebate>
             <description>This is Phone</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </phone>
 
     </PhoneCatalog>
@@ -333,10 +333,10 @@
             <discount>40.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="22">
             <name>Macbook Pro</name>
@@ -347,10 +347,10 @@
             <discount>20.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="23">
             <name>Surface</name>
@@ -361,10 +361,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="24">
             <name>Surface Pro 4</name>
@@ -375,10 +375,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="25">
             <name>Dell XPS 13</name>
@@ -389,10 +389,10 @@
             <discount>25.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="26">
             <name>Dell XPS 15</name>
@@ -403,10 +403,10 @@
             <discount>55.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
         <laptop id="27">
             <name>HP Envy X360</name>
@@ -417,10 +417,10 @@
             <discount>55.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
 
         <laptop id="28">
@@ -432,10 +432,10 @@
             <discount>55.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
 
         <laptop id="29">
@@ -447,10 +447,10 @@
             <discount>5.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
 
         <laptop id="30">
@@ -462,10 +462,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Laptop</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </laptop>
 
     </LaptopCatalog>
@@ -480,10 +480,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="32">
             <name>Echo Studio</name>
@@ -494,10 +494,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="32">
             <name>Echo 1</name>
@@ -508,10 +508,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="33">
             <name>Echo Studio</name>
@@ -522,10 +522,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="34">
             <name>Echo 3</name>
@@ -536,10 +536,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="35">
             <name>Echo 4</name>
@@ -550,10 +550,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
         <voiceAssistant id="36">
             <name>Sony</name>
@@ -564,10 +564,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
 
         <voiceAssistant id="37">
@@ -579,10 +579,10 @@
             <discount>15.0</discount>
             <rebate>2.0</rebate>
             <description>This is Voice Assitant</description>
-            <accessories>
-                <accessory>nintendo_wc</accessory>
-                <accessory>nintendo_sh</accessory>
-            </accessories>
+<!--            <accessories>-->
+<!--                <accessory>nintendo_wc</accessory>-->
+<!--                <accessory>nintendo_sh</accessory>-->
+<!--            </accessories>-->
         </voiceAssistant>
 
     </VocieAssistantCatalog>

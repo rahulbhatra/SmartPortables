@@ -28,13 +28,12 @@ public class DataVisualization extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter pw = response.getWriter();
-        displayPage(request, response, pw);
+        Utilities utility = new Utilities(request, pw);
+        displayPage(utility, pw);
     }
 
-    protected void displayPage(HttpServletRequest request, HttpServletResponse response, PrintWriter pw)
-            throws ServletException, IOException {
+    protected void displayPage(Utilities utility, PrintWriter pw) {
 
-        Utilities utility = new Utilities(request, pw);
         utility.printHtml("Header.html");
         utility.printHtml("LeftNavigationBar.html");
 
@@ -45,10 +44,9 @@ public class DataVisualization extends HttpServlet {
         pw.print("<h3><button id='btnGetChartData'>View Chart</h3>");
         pw.println("<div id='chart_div'></div>");
         pw.println("</div></div></div>");
-        pw.println("<script type='text/javascript' src=\"https://www.gstatic.com/charts/loader.js\"></script>");
+        pw.println("<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>");
         pw.println("<script type='text/javascript' src='DataVisualization.js'></script>");
         utility.printHtml("Footer.html");
-
     }
 
 
@@ -67,9 +65,8 @@ public class DataVisualization extends HttpServlet {
             response.getWriter().write(reviewJson);
 
         } catch (Exception ex) {
-            
+            ex.printStackTrace();
         }
-
     }
 
     //This method takes all the reviews and returns top 3 review in every city;
@@ -78,7 +75,7 @@ public class DataVisualization extends HttpServlet {
         //sorting the list in ascending order;
         Collections.sort(reviewList, new Comparator<Review>(){
             public int compare(Review r1, Review r2){
-                return Integer.parseInt(r2.getReviewRating()) - Integer.parseInt(r1.getReviewRating());
+                return r2.getReviewRating() - r1.getReviewRating();
             }
         });
 
@@ -87,7 +84,7 @@ public class DataVisualization extends HttpServlet {
        //Get list of cities in all reviews;
        ArrayList<String> zipCodeList = new ArrayList<>();
        for(Review review:reviewList){
-            String zipCode = review.getRetailerPin();
+            String zipCode = review.getRetailerZipCode();
             if(!(zipCodeList.contains(zipCode))){
                 zipCodeList.add(zipCode);
             }
@@ -98,7 +95,7 @@ public class DataVisualization extends HttpServlet {
        for(String zipCode:zipCodeList){
             ArrayList<Review> top3ReviewsCity = new ArrayList<>();
             for(Review review:reviewList){
-                if(review.getRetailerPin().equals(zipCode) && top3ReviewsCity.size()<3){
+                if(review.getRetailerZipCode().equals(zipCode) && top3ReviewsCity.size()<3){
                     top3ReviewsCity.add(review);
                 }
             }

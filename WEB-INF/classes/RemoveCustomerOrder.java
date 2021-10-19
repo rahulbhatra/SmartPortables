@@ -21,16 +21,14 @@ public class RemoveCustomerOrder extends HttpServlet {
             return;
         }
 
-        Long orderId = Long.parseLong(request.getParameter("orderId"));
-        String userName = request.getParameter("customerName");
-        String orderName = request.getParameter("orderName");
-        utility.deletePayment(orderId);
-        String customerName = request.getParameter("customerName");
+        Long customerOrderId = Long.parseLong(request.getParameter("customerOrderId"));
+        CustomerOrder customerOrder = MySqlDataStoreUtilities.getCustomerOrder(customerOrderId);
+        utility.deletePayment(customerOrderId);
 
-        System.out.println("--------- Inside Remove Customer Order ----------" + customerName);
+        System.out.println("--------- Inside Remove Customer Order ----------" + customerOrder.getUserId());
 
 
-        response.sendRedirect("ViewCustomerOrder?customerName=" + customerName);
+        response.sendRedirect("ViewCustomerOrder?userId=" + customerOrder.getUserId());
     }
 
 }
